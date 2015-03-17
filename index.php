@@ -66,8 +66,8 @@
 					<section class="container">
 						<h2>Climatic Research</h2>
 						<span>Get started</span>
-						<form role="form" action="search.php" method="post">
-						<input type="text" class="form-control" id="email" placeholder="Enter city" >
+						<form role="form" action="temp2.php" method="post">
+						<input type="text" class="form-control" name="city" id="email" placeholder="Enter city" >
 						</form>
 						<p></p>
 					</section>
