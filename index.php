@@ -100,10 +100,10 @@
 					<header class="major">
 						<h2 align="center">Log in</h2>
 					</header>
-				 <form role="form" action="login1.php" method="post">
+				 <form role="form" action="/dbms/login/login1.php" method="post">
         <div class="form-group">
           <label for="email">Username:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" >
+          <input type="text" name="uname" class="form-control" id="email" placeholder="Enter username" >
         </div>
 		</br>
 		<div class="form-group">
@@ -119,7 +119,7 @@
 		</br>
 		<div class="form-group">
           <label for="pwd">Password:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+          <input type="password" class="form-control" id="pwd" name='password' placeholder="Enter password">
         </div>
 		</br>
 			<div>
@@ -127,10 +127,10 @@
 				<button type="submit" class="btn btn-default">Signin</button>
 				
 				<button type="button" class="btn btn-info">
-				<a href="forget.php" title="Login" rel="home" >Forget Password</a>
+				<a href="/dbms/login/forget.php" title="Login" rel="home" >Forget Password</a>
 				</button>
 				<button type="button" class="btn btn-info">
-				<a href="signup.php" title="signup" rel="home" >Not A Member Yet!</a>
+				<a href="/dbms/login/signup.php" title="signup" rel="home" >Not A Member Yet!</a>
 				</button>
 			
 			</div>	
