@@ -19,7 +19,7 @@ $conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL 
 	  
 	   }
        //echo "Connected to foo";
-	   echo "</table>";
+	   
        oci_close($conn);
    }
    else

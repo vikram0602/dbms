@@ -12,7 +12,7 @@ $city=$_POST["city"];
 if($city==null)
 	header('Location: index.php');
 echo "<p>City Located:</p>";
-echo "<p id='abc'>".$city."</p>";
+echo "<p id='abc' >".$city."</p>";
 
 ?>
 	
