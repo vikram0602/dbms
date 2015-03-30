@@ -8,7 +8,7 @@
 <body>
 <?php
 include("noside.html");
-$city=$_POST["city"];
+$city=htmlentities((string)$_POST["city"]);
 if($city==null)
 	header('Location: index.php');
 echo "<p>City Located:</p>";
