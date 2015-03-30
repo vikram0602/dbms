@@ -81,14 +81,14 @@
 					<div class="row double">
 						<div class="6u">
 							<header class="major">
-								<h2>Pellentesque viverra vulputate enim. Aliquam volutpat. Pellentesque tristique Risus</h2>
-								<span class="byline">In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Donec pulvinar ullamcorper metus.</span>
+								<h2>Analyse the weather </h2>
+								<span class="byline">Study the changing trends of weather. get the historical weather data. Climate Predictions based on calculating and analysing the past data . Reliable and fast .</span>
 							</header>
 						</div>
 						<div class="6u">
-							<h3>Suspendisse dictum porta</h3>
-							<p>Donec leo. Vivamus fermentum nibh in augue. Praesent a lacus at urna congue rutrum. Nulla enim eros, porttitor eu, tempus id, varius non, nibh. Vestibulum imperdiet, magna nec eleifend semper augue mattis wisi maecenas ligula nunc lectus vestibulum euismod lacinia quam nisl.</p>
-							<a href="#" class="button">Nulla aluctus eleifend</a>
+							<h3>Climatological Research system </h3>
+							<p>Using real weather data crunched within our own database. Ask interesting questions about the past or know the future. All in one click, simple and easy to use interface. Subscribe to your favourite cities, get suggestion and announcement.</p>
+							<a href="#" class="button">GET STARTED NOW !</a>
 						</div>
 					</div>
 				</section>
@@ -138,74 +138,6 @@
 				</section>
 			</div>
 
-		<!-- Section Three -->
-			<div class="wrapper style4">
-				<section class="container">
-					<header class="major">
-						<h2>Cras vitae metus aliNuam</h2>
-						<span class="byline">pulvinar mollis. Vestibulum sem magna, elementum vestibulum arcu.</span>
-					</header>
-					<div class="row flush">
-						<div class="4u">
-							<ul class="special-icons">
-								<li>
-									<span class="fa fa-cogs"></span>
-									<h3>Nulla luctus eleifend</h3>
-									<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula pellentesque.</p>
-								</li>
-								<li>
-									<span class="fa fa-wrench"></span>
-									<h3>Etiam posuere augue</h3>
-									<p>Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat liguala.</p>
-								</li>
-								<li>
-									<span class="fa fa-leaf"></span>
-									<h3>Fusce ultrices fringilla</h3>
-									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor.</p>
-								</li>
-							</ul>
-						</div>
-						<div class="4u">
-							<ul class="special-icons">
-								<li>
-									<span class="fa fa-cogs"></span>
-									<h3>Nulla luctus eleifend</h3>
-									<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula pellentesque.</p>
-								</li>
-								<li>
-									<span class="fa fa-wrench"></span>
-									<h3>Etiam posuere augue</h3>
-									<p>Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat liguala.</p>
-								</li>
-								<li>
-									<span class="fa fa-leaf"></span>
-									<h3>Fusce ultrices fringilla</h3>
-									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor.</p>
-								</li>
-							</ul>
-						</div>
-						<div class="4u">
-							<ul class="special-icons">
-								<li>
-									<span class="fa fa-cogs"></span>
-									<h3>Nulla luctus eleifend</h3>
-									<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula pellentesque.</p>
-								</li>
-								<li>
-									<span class="fa fa-wrench"></span>
-									<h3>Etiam posuere augue</h3>
-									<p>Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat liguala.</p>
-								</li>
-								<li>
-									<span class="fa fa-leaf"></span>
-									<h3>Fusce ultrices fringilla</h3>
-									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor.</p>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</section>
-			</div>
 		
 		<!-- Team -->
 			<div class="wrapper style5" id="about">
