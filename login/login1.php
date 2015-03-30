@@ -1,15 +1,10 @@
 <?php
   session_start();
-  $username=$_POST["uname"];
-  $usertype=$_POST["utype"];
-  $password=$_POST["password"];
+  $username=(string)$_POST["uname"];
+  $usertype=(string)$_POST["utype"];
+  $password=(string)$_POST["password"];
   $tablename=$usertype;
   
-  echo $username;
-  echo $usertype;
-  echo $password;
-  echo $tablename;
-	
 
 
   // Create connection
@@ -25,14 +20,17 @@
 else
 	{
 		
-		$result0 = oci_parse($conn,"SELECT user_name FROM login WHERE user_name='".$username."' and user_type='".$usertype."' and password='".$password."'" );
+		$result0 = oci_parse($conn,"SELECT user_name FROM login WHERE user_name=':uname' and user_type=':utype' and password=':password'" );
+                oci_bind_by_name($result0,":uname",$username);
+                oci_bind_by_name($result0,":utype",$usertype);
+                oci_bind_by_name($result0,":password",$password);
 		oci_execute($result0);
 		
 		
 		if($row = oci_fetch_array($result0, OCI_BOTH))
 		{
-			
-			$result1 = oci_parse($conn,"SELECT name FROM ".$tablename." WHERE user_name='".$username."'");
+			$result1 = oci_parse($conn,"SELECT name FROM ".$tablename." WHERE user_name=':username.'");
+			oci_bind_by_name($result1,":username",$username);
 			oci_execute($result1);
 			if($row1=oci_fetch_array($result1, OCI_BOTH));
 			{
@@ -43,13 +41,13 @@ else
 				 echo $_SESSION['CurrentUserType'];
 				if($_SESSION['CurrentUserType']=="guest")
 				{
-					header('Location:/dbms/guest/guestaccount.php');
+					header('Location:guest/guestaccount.php');
 					exit;
 				}
 				
 				else if($_SESSION['CurrentUserType']=="admin")
 				{
-					header('Location:/dbms/admin/adminaccount.php');
+					header('Location:admin/adminaccount.php');
 					exit;
 				}
 			}
