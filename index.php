@@ -100,7 +100,7 @@
 					<header class="major">
 						<h2 align="center">Log in</h2>
 					</header>
-				 <form role="form" action="/dbms/login/login1.php" method="post">
+				 <form role="form" action="login/login1.php" method="post">
         <div class="form-group">
           <label for="email">Username:</label>
           <input type="text" name="uname" class="form-control" id="email" placeholder="Enter username" >
@@ -127,10 +127,10 @@
 				<button type="submit" class="btn btn-default">Signin</button>
 				
 				<button type="button" class="btn btn-info">
-				<a href="/dbms/login/forget.php" title="Login" rel="home" >Forget Password</a>
+				<a href="login/forget.php" title="Login" rel="home" >Forget Password</a>
 				</button>
 				<button type="button" class="btn btn-info">
-				<a href="/dbms/login/signup.php" title="signup" rel="home" >Not A Member Yet!</a>
+				<a href="login/signup.php" title="signup" rel="home" >Not A Member Yet!</a>
 				</button>
 			
 			</div>	
