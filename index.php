@@ -160,12 +160,12 @@
 						<div class="3u">
 							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
 							<h3>Sanjay</h3>
-							<p>java developr</p>
+							<p>Associate Frontend Developer</p>
 						</div>
 						<div class="3u">
 							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
 							<h3>Vikram khurana</h3>
-							<p>Frontend developer</p>
+							<p>Lead Frontend Developer</p>
 						</div>
 					</div>
 				</section>
