@@ -53,7 +53,7 @@
 									</li>
 									<li><a href="faq.php">FAQs</a></li>
 									<li><a href="#login">Login</a></li>
-									<li><a href="contactUs.php">contact us</a></li>
+									<li><a href="contact.php">contact us</a></li>
 									<li><a href="terms.php">Terms of Use</a></li>
 								</ul>
 							</nav>
