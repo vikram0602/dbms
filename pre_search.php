@@ -8,7 +8,7 @@
 <body>
 <?php
 include("noside.html");
-$city=htmlentities((string)$_POST["city"]);
+$city=$_POST["city"];
 if($city==null)
 	header('Location: index.php');
 echo "<p>City Located:</p>";
@@ -16,9 +16,13 @@ echo "<p id='abc' >".$city."</p>";
 
 ?>
 	
-	 	<form   action="search.php" method="post" id="form2">
+	 	<form   action="search.php" method="get" id="form2">
 	 Latitude: <input type="text" id="lat1" name="lat1"  ></br>
 	Longitude: <input type="text" id="lng1" name="lng1" value="aa" > </br>
+	 <input type="hidden" id="humidity" name="humidity" value='aa'  > </br>
+	 	 <input type="hidden" id="wind" name="wind" value='aa'  > </br>
+	 <input type="hidden" id="temperature" name="temperature" value='aa'  > </br>
+
 	  <input type="submit" value="Click To Continue">
 	  </form>
   <br>
