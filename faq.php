@@ -37,6 +37,6 @@ else
 
 }
 
-								
+oci_free_statement($)								
 include("footer.html");
 ?>
