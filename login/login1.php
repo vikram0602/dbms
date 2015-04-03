@@ -4,7 +4,7 @@
   $usertype=(string)$_POST["utype"];
   $password=(string)$_POST["password"];
   $tablename=$usertype;
-  
+  echo $username."  ".$password;
 
 
   // Create connection
@@ -19,11 +19,10 @@
    
 else
 	{
-		
-		$result0 = oci_parse($conn,"SELECT user_name FROM login WHERE user_name=':uname' and user_type=':utype' and password=':password'");
-                oci_bind_by_name($result0,':uname',$username);
-                oci_bind_by_name($result0,':utype',$usertype);
-                oci_bind_by_name($result0,':password',$password);
+		$result0 = oci_parse($conn,"SELECT user_name FROM login WHERE user_name=:uname and user_type=:utype and password=:password" );
+                oci_bind_by_name($result0,":uname",$username);
+                oci_bind_by_name($result0,":utype",$usertype);
+                oci_bind_by_name($result0,":password",$password);
 		oci_execute($result0);
 		
 		
