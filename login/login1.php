@@ -19,7 +19,6 @@
    
 else
 	{
-		
 		$result0 = oci_parse($conn,"SELECT user_name FROM login WHERE user_name=:uname and user_type=:utype and password=:password" );
                 oci_bind_by_name($result0,":uname",$username);
                 oci_bind_by_name($result0,":utype",$usertype);
@@ -57,8 +56,8 @@ else
 		}
 		else
 		{
-			header('Location:login-unsuccessfull.php');
-			exit;
+			//header('Location:login-unsuccessfull.php');
+			//exit;
 		}
 		
 		
