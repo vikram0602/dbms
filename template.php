@@ -30,9 +30,9 @@
 							<!-- Logo -->
 							<?php session_start();
 							if (isset($_SESSION['CurrentUser'])) {
-								echo "<h1><a href=\"#\" id=\"logo\">CR Sys</a></h1>";
+								echo "<h1><a href=\"index.php\" id=\"logo\">CR Sys</a></h1>";
 							} else {
-								echo "<h1><a href=\"#\" id=\"logo\">Climate System</a></h1>";
+								echo "<h1><a href=\"index.php\" id=\"logo\">Climate System</a></h1>";
 							}
 							?>
 							<!-- Nav -->

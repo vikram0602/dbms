@@ -50,13 +50,13 @@
 <?php
 
 include("noside.php");
-$lng=$_GET["lng1"];
-$lat=$_GET["lat1"];
-$hum= $_GET["humidity"];
-$wind= $_GET["wind"];
-$tem= $_GET["temperature"];
-$pre=$_GET["pressure"];
-$rf=$_GET["rainfall"];
+$lng=(float)$_GET["lng1"];
+$lat=(float)$_GET["lat1"];
+$hum= (float)$_GET["humidity"];
+$wind= (float)$_GET["wind"];
+$tem= (float)$_GET["temperature"];
+$pre=(float)$_GET["pressure"];
+$rf=(float)$_GET["rainfall"];
 $mf=$_GET["date"];
 $yf=$_GET["date"];
 $mt=$_GET["date"];

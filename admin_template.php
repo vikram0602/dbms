@@ -3,7 +3,7 @@
   session_start();
   
 if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
-	 header("location:/dbms/login/logout.php");
+	 header("location: login/logout.php");
  ?>
 <!DOCTYPE HTML>
 
