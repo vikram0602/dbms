@@ -1,6 +1,6 @@
 <?php
 include("config.php");
-include("template.html");
+include("template.php");
 if ($conn)
    {
 	   echo "connected";

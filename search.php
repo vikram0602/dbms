@@ -34,7 +34,7 @@
 </style>
 
 <?php
-include("noside.html");
+include("noside.php");
 $lng=$_GET["lng1"];
 $lat=$_GET["lat1"];
 $hum= $_GET["humidity"];
