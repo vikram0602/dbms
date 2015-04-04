@@ -23,6 +23,7 @@ if ($conn)
 	 
 	 
 	 //closing connection
+	 oci_free_statement($stid);
 	 oci_close($conn);
 	 include("footer.html");
    }

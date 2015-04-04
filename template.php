@@ -32,7 +32,7 @@
 							if (isset($_SESSION['CurrentUser'])) {
 								echo "<h1><a href=\"#\" id=\"logo\">CR Sys</a></h1>";
 							} else {
-								echo "<h1><a href=\"#\" id=\"logo\">Climatology Research System</a></h1>";
+								echo "<h1><a href=\"#\" id=\"logo\">Climate System</a></h1>";
 							}
 							?>
 							<!-- Nav -->

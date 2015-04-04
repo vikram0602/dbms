@@ -36,5 +36,6 @@ else
 
 }
 
+oci_close($conn);
 include("footer.html");
 ?>

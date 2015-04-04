@@ -8,9 +8,9 @@
 if(isset($_SESSION['CurrentUser']))
 {
 	if($_SESSION['CurrentUserType']=="admin")
-		 header("location:/dbms/admin/adminaccount.php");
+		 header("Location: admin/adminaccount.php");
 	 if($_SESSION['CurrentUserType']=="admin")
-		 header("location:/dbms/guest/guestaccount.php");
+		 header("Location: guest/guestaccount.php");
 
 }	
 
@@ -66,7 +66,7 @@ else
 			//header('Location:login-unsuccessfull.php');
 			//exit;
 		}
-		
+		oci_free_statement($result0);
 		
 	}
 	oci_close($conn);

@@ -22,6 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       oci_bind_by_name($result,":email",$email);
       oci_bind_by_name($result,":message",$message);
       oci_execute($result);
+      oci_free_statement($result);
+      oci_close($conn);
      //Connect DB insert new Q
   } else {
       echo "<p>Access Denied</p>";
