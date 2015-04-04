@@ -23,7 +23,7 @@ else
 	{
 	 
 	
-	 $b="SELECT * from faq order by question";
+	   $b="SELECT * from faq order by question";
 	   $stid = oci_parse($conn,$b);//parsing your query
 	   oci_execute($stid);// execute that parsed query
 	   
@@ -31,10 +31,10 @@ else
 	   while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {// getting your results in row 
 			$question_number += 1;
 					echo "<p style=color:blue><i><strong>$question_number) ".$row[0]."</p></i></strong><p>".$row[1]."</p>" ;
-				}
+		}
+		oci_free_statement($stid);
 
 }
 
-oci_free_statement($)								
 include("footer.html");
 ?>
