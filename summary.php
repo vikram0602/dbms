@@ -1,5 +1,5 @@
 <?php
-include("noside.html");
+include("noside.php");
 include("config.php");
 ?>
 <style>

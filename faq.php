@@ -1,5 +1,5 @@
 <?php
-include("template.html");
+include("template.php");
 ?>
 <header class="major">
 <h2>Frequently Asked Questions</h2>
@@ -35,6 +35,6 @@ else
 
 }
 
-								
+oci_free_statement($)								
 include("footer.html");
 ?>

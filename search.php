@@ -48,8 +48,14 @@
 </style>
 
 <?php
+<<<<<<< HEAD
 include("noside.html");
 
+||||||| merged common ancestors
+include("noside.html");
+=======
+include("noside.php");
+>>>>>>> 6cf142d3d85da801fa948c5591b0cbbb5bfb1279
 $lng=$_GET["lng1"];
 $lat=$_GET["lat1"];
 $hum= $_GET["humidity"];

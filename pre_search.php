@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php
-include("noside.html");
+include("noside.php");
 $city=$_POST["city"];
 if($city==null)
 	header('Location: index.php');

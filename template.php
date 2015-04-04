@@ -28,7 +28,7 @@
 						<div class="container">
 								
 							<!-- Logo -->
-								<h1><a href="#" id="logo">Climatic Research</a></h1>
+								<h1><a href="#" id="logo">CR</a></h1>
 							
 							<!-- Nav -->
 							<nav id="nav">
@@ -41,6 +41,20 @@
 									<li><a href="index.php#login">Login</a></li>
 									<li><a href="contact.php">contact us</a></li>
 									<li><a href="terms.php">Terms of Use</a></li>
+									<?php
+									  session_start();
+
+									//echo $_SESSION["CurrentUserName"];
+								//echo '<li><a href="/dbms/admin/adminaccount.php"> hasdhjasdh</a></li>';	//header("location:/dbms/admin/adminaccount.php");
+
+								if(isset($_SESSION['CurrentUser']))
+										{
+											if($_SESSION['CurrentUserType']=="admin")
+												echo '<li><a href="/dbms/admin/adminaccount.php">'.$_SESSION["CurrentUserName"].'</a></li>';	//header("location:/dbms/admin/adminaccount.php");
+											if($_SESSION['CurrentUserType']=="guest")
+												echo '<li><a href="/dbms/guest/guestaccount.php">'.$_SESSION["CurrentUserName"].'</a></li>';
+											}	
+								?>
 								</ul>
 							</nav>
 							</div>
