@@ -21,6 +21,8 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
       oci_bind_by_name($result,":question",$question);
       oci_bind_by_name($result,":answer",$answer);
       oci_execute($result)
+      oci_free_statement($result);
+      oci_close($conn);
      //Connect DB insert new Q
   } else {
       echo "<p>Access Denied</p>";
