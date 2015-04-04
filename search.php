@@ -5,7 +5,7 @@
         display: table;
 		
 		 font-family: "Times New Roman", Times, serif;
-		 width: 1200px;
+		 width: 1000px;
 		 padding-top: 200px;
     
     padding-bottom: 200px;
@@ -38,10 +38,10 @@
         border: solid;
         border-width: thin;
         padding-left: px;
-    
+
     padding-right: 1px;
 		font-size:20px;
-		width: 150px;
+		width: 10px;
 		height:0px;
 		
     }
@@ -165,7 +165,7 @@ $msid="100";
           </select>
 		 </div>
          <div class='Ce'>
-		 Year From:<select id="date" name="date"   > 
+		 From:<select id="date" name="date"   > 
 		 				<option value="aa" selected="selected" ></option>
 		        <option value="04" >2004</option>
 				<option value="05" >2005</option>
@@ -202,7 +202,7 @@ $msid="100";
 		 </div>
 
           <div class='Ce'>
-		  Year Till:<select id="date" name="date" > 
+		  Till:<select id="date" name="date" > 
 		 				<option value="aa" selected="selected" ></option>
 		        <option value="04" >2004</option>
 				<option value="05" >2005</option>
@@ -236,8 +236,8 @@ $conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL 
 	   $b="SELECT * from station_table";
 	   $stid = oci_parse($conn,$b);
 	   oci_execute($stid);
-		$minsum=100;
-		 while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
+	   $minsum=100;
+	   while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
 			$sid=$row[0];
 			$t_lat=round($row[1],2);
 			$t_lng=round($row[2],2);
@@ -255,6 +255,7 @@ $conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL 
 
 			}
 	   }
+	   oci_free_statement($stid);
 	   echo "</br>".$lng."    a   ".$lat."</br>station id=".$msid."</br>";
        //echo "Connected to foo";
 	  
@@ -295,7 +296,8 @@ $conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL 
    
 	 
 	   }
-			echo "</div>";	   
+			echo "</div>";	 
+	   oci_free_statement($stid);  
        oci_close($conn);
    
    }
