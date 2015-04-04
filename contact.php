@@ -1,4 +1,4 @@
-<?php include("template_contact.html"); ?>
+<?php include("template.php"); ?>
 
 <form action="contact.php" method="POST">
 Email: 
