@@ -1,4 +1,4 @@
-<?php include("template.html"); ?>
+<?php include("template.php"); ?>
 
 <h1> Welcome, Visitor! </h1>
 <p> You are viewing the visitor page for station number 
