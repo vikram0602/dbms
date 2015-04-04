@@ -17,8 +17,7 @@ echo $station_id;
 include("config.php");
 
 if (!$conn)
-  die("<p>Cannot connect to database</p>"); 
-
+  die("<p>Cannot connect to database</p>");
 
 ?>
 
