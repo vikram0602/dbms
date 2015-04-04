@@ -1,5 +1,5 @@
 <?php
-include("template.php");
+include("template.html");
 ?>
 <header class="major">
 <h2>Frequently Asked Questions</h2>
@@ -30,11 +30,11 @@ else
 	   $question_number = 0;
 	   while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {// getting your results in row 
 			$question_number += 1;
-					echo "<p style=color:blue><i><strong>$question_number) ".$row[0]."</p></i></strong><p>".$row[1]."</p>" ;
+					echo "<p style=color:blue><strong>$question_number) ".$row[0]."</p></strong><p>".$row[1]."</p>" ;
 				}
 
 }
 
-oci_free_statement($)								
+								
 include("footer.html");
 ?>
