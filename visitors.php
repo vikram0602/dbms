@@ -14,7 +14,7 @@ echo $station_id;
 ?>
 .</p>
 
-<h1> Station Summary </h1>
+<h1> Station Summary for the Measurement Period</h1>
 
 <?php
 include("config.php");
@@ -73,6 +73,7 @@ oci_bind_by_name($avgRainfall_s,":station_id",$station_id);
 if (!$conn) {
   echo "<p>Cannot connect to database</p>";
 } else {
+  //Execute statements
   oci_execute($maxTemp_s);
   oci_execute($minTemp_s);
   oci_execute($avgTemp_s);
@@ -88,6 +89,40 @@ if (!$conn) {
   oci_execute($maxWind_s);
   oci_execute($minWind_s);
   oci_execute($avgWind_s);
+  //Collect results
+  $maxTemp_v = round(oci_fetch_array($maxTemp_s, OCI_BOTH)[0],2);
+  $minTemp_v = round(oci_fetch_array($minTemp_s, OCI_BOTH)[0],2);
+  $avgTemp_v = round(oci_fetch_array($avgTemp_s, OCI_BOTH)[0],2);
+  $maxHum_v = round(oci_fetch_array($maxHum_s, OCI_BOTH)[0],2);
+  $minHum_v = round(oci_fetch_array($minHum_s, OCI_BOTH)[0],2);
+  $avgHum_v = round(oci_fetch_array($avgHum_s, OCI_BOTH)[0],2);
+  $maxPressure_v = round(oci_fetch_array($maxPressure_s, OCI_BOTH)[0],2);
+  $minPressure_v = round(oci_fetch_array($minPressure_s, OCI_BOTH)[0],2);
+  $avgPressure_v = round(oci_fetch_array($avgPressure_s, OCI_BOTH)[0],2);
+  $maxRainfall_v = round(oci_fetch_array($maxRainfall_s, OCI_BOTH)[0],2);
+  $minRainfall_v = round(oci_fetch_array($minRainfall_s, OCI_BOTH)[0],2);
+  $avgRainfall_v = round(oci_fetch_array($avgRainfall_s, OCI_BOTH)[0],2);
+  $maxWind_v = round(oci_fetch_array($maxWind_s, OCI_BOTH)[0],2);
+  $minWind_v = round(oci_fetch_array($minWind_s, OCI_BOTH)[0],2);
+  $avgWind_v = round(oci_fetch_array($avgWind_s, OCI_BOTH)[0],2);
+  //Print results to the page
+  echo "<table style=\"width:85%\"><tr><td><u>Parameter</u></td><td><u>Value</u></td><td><u>Units</u></td></tr>";
+  echo "<tr><td>Maximum Temperature</td><td>$maxTemp_v</td><td>Fahrenheit</td></tr>";
+  echo "<tr><td>Average Temperature</td><td>$avgTemp_v</td><td>Fahrenheit</td></tr>";
+  echo "<tr><td>Minimum Temperature</td><td>$minTemp_v</td><td>Fahrenheit</td></tr>";
+  echo "<tr><td>Maximum Humidity</td><td>$maxHum_v</td><td>Dewpoint in Fahrenheit</td></tr>";
+  echo "<tr><td>Average Humidity</td><td>$avgHum_v</td><td>Dewpoint in Fahrenheit</td></tr>";
+  echo "<tr><td>Minimum Humidity</td><td>$minHum_v</td><td>Dewpoint in Fahrenheit</td></tr>";
+  echo "<tr><td>Maximum Pressure</td><td>$maxPressure_v</td><td>Pressure in Millibars</td></tr>";
+  echo "<tr><td>Average Pressure</td><td>$avgPressure_v</td><td>Pressure in Millibars</td></tr>";
+  echo "<tr><td>Minimum Pressure</td><td>$minPressure_v</td><td>Pressure in Millibars</td></tr>";
+  echo "<tr><td>Maximum Rainfall</td><td>$maxRainfall_v</td><td>Inches per Hour</td></tr>";
+  echo "<tr><td>Average Rainfall</td><td>$avgRainfall_v</td><td>Inches per Hour</td></tr>";
+  echo "<tr><td>Minimum Rainfall</td><td>$minRainfall_v</td><td>Inches per Hour</td></tr>";
+  echo "<tr><td>Maximum Windspeed</td><td>$maxWind_v</td><td>Miles per Hour</td></tr>";
+  echo "<tr><td>Average Windspeed</td><td>$avgWind_v</td><td>Miles per Hour</td></tr>";
+  echo "<tr><td>Minimum Windspeed</td><td>$minWind_v</td><td>Miles per Hour</td></tr>";
+  echo "</table>";
 }
 
 
