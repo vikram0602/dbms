@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-<?php include("template.html"); ?>
-=======
 <?php include("template.php"); ?>
->>>>>>> eaaa7be5914554e02073317f7d2125c08ffdabad
+
 
 <form action="contact.php" method="POST">
 Email: 
