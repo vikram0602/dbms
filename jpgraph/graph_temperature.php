@@ -33,13 +33,15 @@ $graph->xgrid->Show();
 $graph->xgrid->SetLineStyle("solid");
 $graph->xgrid->SetColor('#E3E3E3');
 $graph->xaxis->scale->ticks->Set(1);
+$graph->xaxis->title->Set("Monthly Index                                                                         ");
+$graph->yaxis->title->Set("Temperature (F°)");
 
 $p1 = new LinePlot($temp_temps,$temp_dates);
 $graph->Add($p1);
 $p1->SetFillGradient('yellow','red');
 $p1->SetStepStyle();
 $p1->SetColor("#6495ED");
-$p1->SetLegend('Temperature');
+$p1->SetLegend('Characteristic Temperature');
 $graph->legend->SetFrameWeight(1);
 
 /*var_dump($temp_temps);
