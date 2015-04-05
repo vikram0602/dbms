@@ -50,35 +50,46 @@
 <?php
 
 include("noside.php");
-$lng=(float)$_GET["lng1"];
-$lat=(float)$_GET["lat1"];
-$hum= (float)$_GET["humidity"];
-$wind= (float)$_GET["wind"];
-$tem= (float)$_GET["temperature"];
-$pre=(float)$_GET["pressure"];
-$rf=(float)$_GET["rainfall"];
-$mf=$_GET["date"];
-$yf=$_GET["date"];
-$mt=$_GET["date"];
-$yt=$_GET["date"];
+if (isset($_GET["lng1"]))
+	$lng=(float)$_GET["lng1"];
+if (isset($_GET["lat1"]))
+	$lat=(float)$_GET["lat1"];
+if (isset($_GET["humidity"]))
+	$hum= (float)$_GET["humidity"];
+if (isset($_GET["wind"]))
+	$wind= (float)$_GET["wind"];
+if (isset($_GET["temperature"]))
+	$tem= (float)$_GET["temperature"];
+if (isset($_GET["pressure"]))
+	$pre=(float)$_GET["pressure"];
+if (isset($_GET["rainfall"]))
+	$rf=(float)$_GET["rainfall"];
+if (isset($_GET["date"]))
+	$mf=$_GET["date"];
+if (isset($_GET["date"]))
+	$yf=$_GET["date"];
+if (isset($_GET["date"]))
+	$mt=$_GET["date"];
+if (isset($_GET["date"]))
+	$yt=$_GET["date"];
 
-if($hum=='aa' or $hum==NULL)
+if(!isset($hum) or $hum=='aa' or $hum==NULL)
 	$hum=-100;
-if($wind=='aa' or $wind==NULL)
+if(!isset($win) or $wind=='aa' or $wind==NULL)
 	$wind=0;
-if($tem=='aa' or $tem== NULL)
+if(!isset($tem) or $tem=='aa' or $tem== NULL)
 	$tem=-20;
-if($pre=='aa' or $pre== NULL)
+if(!isset($pre) or $pre=='aa' or $pre== NULL)
 	$pre=0;
-if($rf=='aa' or $rf== NULL)
+if(!isset($rf) or $rf=='aa' or $rf== NULL)
 	$rf=0;
-if($mf=='aa' or $mf== NULL)
+if(!isset($mf) or $mf=='aa' or $mf== NULL)
 	$mf=0;
-if($yf=='aa' or $yf== NULL)
+if(!isset($yf) or $yf=='aa' or $yf== NULL)
 	$mf=0;
-if($mt=='aa' or $mt== NULL)
+if(!isset($mt) or $mt=='aa' or $mt== NULL)
 	$mt=0;
-if($yt=='aa' or $yt== NULL)
+if(!isset($yt) or $yt=='aa' or $yt== NULL)
 	$yt=0;
 
 $lng1=round($lng,2);
@@ -230,7 +241,6 @@ $msid="100";
 <?php
 include_once("config.php");
 
-//$conn = oci_pconnect("vkhurana","pulsar220", "oracla.cise.ufl.edu:1521/orcl");
    if ($conn)
    {
 	   $b="SELECT * from station_table";

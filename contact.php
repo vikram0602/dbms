@@ -13,7 +13,6 @@ Message:
 
 include("config.php");
 
-session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($_SESSION["CurrentUserType"]=="guest") {
       $email = (string)$_POST["email"];

@@ -28,7 +28,13 @@
 						<div class="container">
 								
 							<!-- Logo -->
-								<h1><a href="#" id="logo">CR</a></h1>
+							<?php session_start();
+							if (isset($_SESSION['CurrentUser'])) {
+								echo "<h1><a href=\"index.php\" id=\"logo\">CR Sys</a></h1>";
+							} else {
+								echo "<h1><a href=\"index.php\" id=\"logo\">Climate System</a></h1>";
+							}
+							?>
 							
 							<!-- Nav -->
 							<nav id="nav">
@@ -42,7 +48,6 @@
 									<li><a href="contact.php">contact us</a></li>
 									<li><a href="terms.php">Terms of Use</a></li>
 									<?php
-									  session_start();
 
 									//echo $_SESSION["CurrentUserName"];
 								//echo '<li><a href="/dbms/admin/adminaccount.php"> hasdhjasdh</a></li>';	//header("location:/dbms/admin/adminaccount.php");
