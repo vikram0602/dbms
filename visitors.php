@@ -20,20 +20,20 @@ echo $station_id;
 include("config.php");
 
 //Queries
-$maxTemp_b="SELECT temperature,time_stamp from climate_data where station_id=:station_id order by temperature desc";
-$minTemp_b="SELECT temperature,time_stamp from climate_data where station_id=:station_id order by temperature asc";
+$maxTemp_b="SELECT temperature,time_stamp from climate_data where station_id=:station_id order by temperature desc,time_stamp desc";
+$minTemp_b="SELECT temperature,time_stamp from climate_data where station_id=:station_id order by temperature asc,time_stamp desc";
 $avgTemp_b="SELECT avg(temperature) from climate_data where station_id=:station_id";
-$maxHum_b="SELECT humidity,time_stamp from climate_data where station_id=:station_id order by humidity desc";
-$minHum_b="SELECT humidity,time_stamp from climate_data where station_id=:station_id order by humidity asc";
+$maxHum_b="SELECT humidity,time_stamp from climate_data where station_id=:station_id order by humidity desc,time_stamp desc";
+$minHum_b="SELECT humidity,time_stamp from climate_data where station_id=:station_id order by humidity asc,time_stamp desc";
 $avgHum_b="SELECT avg(humidity) from climate_data where station_id=:station_id";
-$maxPressure_b="SELECT pressure,time_stamp from climate_data where station_id=:station_id order by pressure desc";
-$minPressure_b="SELECT pressure,time_stamp from climate_data where station_id=:station_id order by pressure asc";
+$maxPressure_b="SELECT pressure,time_stamp from climate_data where station_id=:station_id order by pressure desc,time_stamp desc";
+$minPressure_b="SELECT pressure,time_stamp from climate_data where station_id=:station_id order by pressure asc,time_stamp desc";
 $avgPressure_b="SELECT avg(pressure) from climate_data where station_id=:station_id";
-$maxWind_b="SELECT wind_speed,time_stamp from climate_data where station_id=:station_id order by wind_speed desc";
-$minWind_b="SELECT wind_speed,time_stamp from climate_data where station_id=:station_id order by wind_speed asc";
+$maxWind_b="SELECT wind_speed,time_stamp from climate_data where station_id=:station_id order by wind_speed desc,time_stamp desc";
+$minWind_b="SELECT wind_speed,time_stamp from climate_data where station_id=:station_id order by wind_speed asc,time_stamp desc";
 $avgWind_b="SELECT avg(wind_speed) from climate_data where station_id=:station_id";
-$maxRainfall_b="SELECT rainfall,time_stamp from climate_data where station_id=:station_id order by rainfall desc";
-$minRainfall_b="SELECT rainfall,time_stamp from climate_data where station_id=:station_id order by rainfall asc";
+$maxRainfall_b="SELECT rainfall,time_stamp from climate_data where station_id=:station_id order by rainfall desc,time_stamp desc";
+$minRainfall_b="SELECT rainfall,time_stamp from climate_data where station_id=:station_id order by rainfall asc,time_stamp desc";
 $avgRainfall_b="SELECT avg(rainfall) from climate_data where station_id=:station_id";
 
 //Prepare the statements
