@@ -12,7 +12,7 @@ if (!empty($_GET['station_id'])) {
 }
 echo $station_id;
 ?>
-.</p>
+.<br>For more information, please <a href="index.php#login">sign in.</a></p>
 
 <h1> Station Summary for the Measurement Period</h1>
 
