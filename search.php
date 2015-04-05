@@ -91,10 +91,21 @@ $msid="100";
 
 	 <div class='Ce'> 
 <input type="submit" value="FILTER SEARCH">
-	  </button>
-	  </div> 
+	  
+	  </div>
+	   </form>
+<div class='Ce'>
+<form action="analysis.php" method="get" id="form3">
+<input type="submit"  value="ANALYSIS">
+
+</form>
+
+</div>
+
+
+	  
 	  </div></div> 
-	  </form>
+	 
 </body>
 <?php
 $conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521)) (CONNECT_DATA = (SERVICE_NAME = ORCL) (SID = ORCL)))');
