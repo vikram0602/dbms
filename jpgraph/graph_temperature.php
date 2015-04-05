@@ -3,7 +3,6 @@
 include('../config.php');
 require_once('jpgraph.php');
 require_once('jpgraph_line.php');
-require_once('jpgraph_date.php');
 
 //DB
 $station_id = (string)$_GET["station_id"];
