@@ -83,7 +83,7 @@ $a="SELECT * from faq";
 	else
 	{
 	echo "not authorised user"; 
-				   header('Location:faq.php');
+				   header('Location:/dbms/faq.php');
 					exit;
 	}
 	include("footer.html");

@@ -65,9 +65,9 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 									<h2><?php echo $_SESSION['CurrentUserName']  ?></h2>
 								</header>									
 								<ul class="default" >
-									<li class="active"><a href="index.php">Home</a></li>
+									<li class="active"><a href="adminaccount.php">Home</a></li>
 									<li>
-										<a href="index.php#about">About Us</a>
+										<a href="search.php">Search User</a>
 									</li>
 									<li><a href="faq.php">FAQs</a></li>
 									<li><a href="index.php#login">Login</a></li>
