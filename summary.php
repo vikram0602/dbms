@@ -1,5 +1,5 @@
 <?php
-include("noside.html");
+include("noside.php");
 include("config.php");
 ?>
 <style>
@@ -82,7 +82,7 @@ Summary
 	   $b="SELECT * from country";
 	   $stid = oci_parse($conn,$b);
 	   oci_execute($stid);
-	   
+	   oci_free_statement($stid);
 	  
 	  
        //echo "Connected to foo";

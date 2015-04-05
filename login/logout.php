@@ -11,8 +11,11 @@
  <body>
  <?php
  session_start();
+ unset($_SESSION["CurrentUser"]);
+ unset($_SESSION["CurrentUserType"]);
+ unset($_SESSION["CurrentUserName"]);
  session_destroy();
- header('Location:/dbms/index.php');
+ header('Location: ../index.php');
  ?>
   
  </body>

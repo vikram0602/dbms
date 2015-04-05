@@ -5,7 +5,14 @@
   $password=(string)$_POST["password"];
   $tablename=$usertype;
   echo $username."  ".$password;
+if(isset($_SESSION['CurrentUser']))
+{
+	if($_SESSION['CurrentUserType']=="admin")
+		 header("Location: admin/adminaccount.php");
+	 if($_SESSION['CurrentUserType']=="admin")
+		 header("Location: guest/guestaccount.php");
 
+}	
 
   // Create connection
 
@@ -28,8 +35,8 @@ else
 		
 		if($row = oci_fetch_array($result0, OCI_BOTH))
 		{
-			$result1 = oci_parse($conn,"SELECT name FROM ".$tablename." WHERE user_name=':username.'");
-			oci_bind_by_name($result1,":username",$username);
+			$result1 = oci_parse($conn,"SELECT name FROM ".$tablename." WHERE user_name='".$username."'");
+//			oci_bind_by_name($result1,":username",$username);
 			oci_execute($result1);
 			if($row1=oci_fetch_array($result1, OCI_BOTH));
 			{
@@ -40,13 +47,13 @@ else
 				 echo $_SESSION['CurrentUserType'];
 				if($_SESSION['CurrentUserType']=="guest")
 				{
-					header('Location:guest/guestaccount.php');
+					header('Location:/dbms/guest/guestaccount.php');
 					exit;
 				}
 				
 				else if($_SESSION['CurrentUserType']=="admin")
 				{
-					header('Location:admin/adminaccount.php');
+					header('Location:/dbms/admin/adminaccount.php');
 					exit;
 				}
 			}
@@ -59,7 +66,7 @@ else
 			//header('Location:login-unsuccessfull.php');
 			//exit;
 		}
-		
+		oci_free_statement($result0);
 		
 	}
 	oci_close($conn);

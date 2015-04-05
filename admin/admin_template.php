@@ -35,7 +35,7 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 						<div class="container">
 								
 							<!-- Logo -->
-								<h1><a href="#" id="logo">Climatic Research</a></h1>
+								<h1><a href="../index.php" id="logo">Climatic Research</a></h1>
 							
 							<!-- Nav -->
 							<nav id="nav">
@@ -65,9 +65,9 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 									<h2><?php echo $_SESSION['CurrentUserName']  ?></h2>
 								</header>									
 								<ul class="default" >
-									<li class="active"><a href="index.php">Home</a></li>
+									<li class="active"><a href="adminaccount.php">Home</a></li>
 									<li>
-										<a href="index.php#about">About Us</a>
+										<a href="search.php">Search User</a>
 									</li>
 									<li><a href="faq.php">FAQs</a></li>
 									<li><a href="index.php#login">Login</a></li>
