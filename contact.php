@@ -1,4 +1,4 @@
-<?php include("template_contact.html"); ?>
+<?php include("template.php"); ?>
 
 <form action="contact.php" method="POST">
 Email: 
@@ -13,7 +13,6 @@ Message:
 
 include("config.php");
 
-session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($_SESSION["CurrentUserType"]=="guest") {
       $email = (string)$_POST["email"];
@@ -22,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       oci_bind_by_name($result,":email",$email);
       oci_bind_by_name($result,":message",$message);
       oci_execute($result);
+      oci_free_statement($result);
+      oci_close($conn);
      //Connect DB insert new Q
   } else {
       echo "<p>Access Denied</p>";

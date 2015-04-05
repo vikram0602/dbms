@@ -21,22 +21,21 @@ include("config.php");
    
 else
 	{
-
-	echo "connected";
-	 
 	 
 	
-	 $b="SELECT * from faq";
+	   $b="SELECT * from faq order by question";
 	   $stid = oci_parse($conn,$b);//parsing your query
 	   oci_execute($stid);// execute that parsed query
 	   
+	   $question_number = 0;
 	   while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {// getting your results in row 
-		
-					echo $row[0]." ".$row[1];
-				}
+			$question_number += 1;
+					echo "<p style=color:blue><i><strong>$question_number) ".$row[0]."</p></i></strong><p>".$row[1]."</p>" ;
+		}
+		oci_free_statement($stid);
 
 }
 
-oci_free_statement($)								
+oci_close($conn);
 include("footer.html");
 ?>

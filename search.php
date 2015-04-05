@@ -3,8 +3,17 @@
     .Ta
     {
         display: table;
-		padding-bottom:5px;
-		padding-top: 5px;
+		
+		 font-family: "Times New Roman", Times, serif;
+		 width: 1000px;
+		 padding-top: 200px;
+    
+    padding-bottom: 200px;
+    
+		 border-collapse: collapse;
+		 border: 1px solid black;
+		 text-align:center;
+
     }
   
     .Heading
@@ -14,10 +23,13 @@
         text-align: center;
 		font-size:24px;
 		color:#760113;
+		font-style: italic;
+		font-family: "Times New Roman", Times, serif;
     }
     .Ro
     {
         display: table-row;
+        text-align: center;
 		
     }
     .Ce
@@ -25,27 +37,60 @@
         display: table-cell;
         border: solid;
         border-width: thin;
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: px;
+
+    padding-right: 1px;
 		font-size:20px;
-		width: 150px;
-		height:30px;
+		width: 10px;
+		height:0px;
+		
     }
 </style>
 
 <?php
+
 include("noside.php");
-$lng=$_GET["lng1"];
-$lat=$_GET["lat1"];
-$hum= $_GET["humidity"];
-$wind= $_GET["wind"];
-$tem= $_GET["temperature"];
-if($hum=='aa' or $hum==NULL)
+if (isset($_GET["lng1"]))
+	$lng=(float)$_GET["lng1"];
+if (isset($_GET["lat1"]))
+	$lat=(float)$_GET["lat1"];
+if (isset($_GET["humidity"]))
+	$hum= (float)$_GET["humidity"];
+if (isset($_GET["wind"]))
+	$wind= (float)$_GET["wind"];
+if (isset($_GET["temperature"]))
+	$tem= (float)$_GET["temperature"];
+if (isset($_GET["pressure"]))
+	$pre=(float)$_GET["pressure"];
+if (isset($_GET["rainfall"]))
+	$rf=(float)$_GET["rainfall"];
+if (isset($_GET["date"]))
+	$mf=$_GET["date"];
+if (isset($_GET["date"]))
+	$yf=$_GET["date"];
+if (isset($_GET["date"]))
+	$mt=$_GET["date"];
+if (isset($_GET["date"]))
+	$yt=$_GET["date"];
+
+if(!isset($hum) or $hum=='aa' or $hum==NULL)
 	$hum=-100;
-if($wind=='aa' or $wind==NULL)
+if(!isset($win) or $wind=='aa' or $wind==NULL)
 	$wind=0;
-if($tem=='aa' or $tem== NULL)
+if(!isset($tem) or $tem=='aa' or $tem== NULL)
 	$tem=-20;
+if(!isset($pre) or $pre=='aa' or $pre== NULL)
+	$pre=0;
+if(!isset($rf) or $rf=='aa' or $rf== NULL)
+	$rf=0;
+if(!isset($mf) or $mf=='aa' or $mf== NULL)
+	$mf=0;
+if(!isset($yf) or $yf=='aa' or $yf== NULL)
+	$mf=0;
+if(!isset($mt) or $mt=='aa' or $mt== NULL)
+	$mt=0;
+if(!isset($yt) or $yt=='aa' or $yt== NULL)
+	$yt=0;
 
 $lng1=round($lng,2);
 $lat1=round($lat,2);
@@ -59,7 +104,7 @@ $msid="100";
 	 <div class='Ta'>
 	 <div class='Ro'>
 	 <div class='Ce'>
-	 Humidity:<select id="humidity" name="humidity"  > 
+	 Humidity:  <select id="humidity" name="humidity"  > 
 				<option value="aa" selected="selected" ></option>
 				<option value="0" >> 0</option>
 				<option value="10" >> 10</option>
@@ -69,7 +114,7 @@ $msid="100";
           </select>
 		</div>
 		<div class='Ce'>
-	 	 Wind Speed:<select id="wind" name="wind"   > 
+	 	 Wind_Speed:<select id="wind" name="wind"   > 
 		 				<option value="aa" selected="selected" ></option>
 		 <option value="0" >> 0</option>
 				<option value="2" >> 2</option>
@@ -89,35 +134,120 @@ $msid="100";
           </select>
 		  </div>
 
+		  <div class='Ce'>
+	 Pressure:<select id="pressure" name="pressure"   > 	
+	 				<option value="aa" selected="selected" ></option>
+	  <option value="0" >> 0</option>
+				<option value="800" >> 800</option>
+				<option value="1000" >> 1000</option>
+				<option value="1200" >> 1200</option>
+				<option value="1400" >> 1400</option>
+          </select>
+		  </div>
+
+		  <div class='Ce'>
+	 Rainfall:<select id="rainfall" name="rainfall"   > 	
+	 				<option value="aa" selected="selected" ></option>
+	            <option value="0" >> 0</option>
+	            <option value="0.5">> 0.5</option>
+				<option value="1" >> 1</option>
+				<option value="2" >> 2</option>
+				<option value="5" >> 5</option>
+				<option value="7" >> 7</option>
+          </select>
+		  </div>
+
+		  <div class='Ce'>
+	 	 Month From:<select id="date" name="date"   > 
+		 				<option value="aa" selected="selected" ></option>
+		        <option value="JAN" >JANUARY</option>
+				<option value="FEB" >FEBRUARY</option>
+				<option value="MAR" >MARCH</option>
+				<option value="APR" >APRIL</option>
+				<option value="MAY" >MAY</option>
+				<option value="JUN" >JUNE</option>
+				<option value="JUL" >JULY</option>
+				<option value="AUG" >AUGUST</option>
+				<option value="SEP" >SEPTEMBER</option>
+				<option value="OCT" >OCTOBER</option>
+				<option value="NOV" >NOVEMBER</option>
+				<option value="DEC" >DECEMBER</option>
+
+          </select>
+		 </div>
+         <div class='Ce'>
+		 From:<select id="date" name="date"   > 
+		 				<option value="aa" selected="selected" ></option>
+		        <option value="04" >2004</option>
+				<option value="05" >2005</option>
+				<option value="06" >2006</option>
+				<option value="07" >2007</option>
+				<option value="08" >2008</option>
+				<option value="09" >2009</option>
+				<option value="10" >2010</option>
+				<option value="11" >2011</option>
+				<option value="12" >2012</option>
+				<option value="13" >2013</option>
+				<option value="14" >2014</option>
+				
+
+          </select>
+		 </div>
+         <div class='Ce'>
+		 Month Till:<select id="date" name="date"   > 
+		 				<option value="aa" selected="selected" ></option>
+		        <option value="JAN" >JANUARY</option>
+				<option value="FEB" >FEBRUARY</option>
+				<option value="MAR" >MARCH</option>
+				<option value="APR" >APRIL</option>
+				<option value="MAY" >MAY</option>
+				<option value="JUN" >JUNE</option>
+				<option value="JUL" >JULY</option>
+				<option value="AUG" >AUGUST</option>
+				<option value="SEP" >SEPTEMBER</option>
+				<option value="OCT" >OCTOBER</option>
+				<option value="NOV" >NOVEMBER</option>
+				<option value="DEC" >DECEMBER</option>
+
+				</select>
+		 </div>
+
+          <div class='Ce'>
+		  Till:<select id="date" name="date" > 
+		 				<option value="aa" selected="selected" ></option>
+		        <option value="04" >2004</option>
+				<option value="05" >2005</option>
+				<option value="06" >2006</option>
+				<option value="07" >2007</option>
+				<option value="08" >2008</option>
+				<option value="09" >2009</option>
+				<option value="10" >2010</option>
+				<option value="11" >2011</option>
+				<option value="12" >2012</option>
+				<option value="13" >2013</option>
+				<option value="14" >2014</option>
+				
+
+          </select>
+		 </div>
+
 	 <div class='Ce'> 
-<input type="submit" value="FILTER SEARCH">
+<input type="submit" value="SEARCH">
 	  
-	  </div>
-	   </form>
-<div class='Ce'>
-<form action="analysis.php" method="get" id="form3">
-<input type="submit"  value="ANALYSIS">
-
-</form>
-
-</div>
-
-
-	  
+	  </div> 
 	  </div></div> 
-	 
+	  </form>
 </body>
 <?php
-$conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle.cise.ufl.edu)(PORT = 1521)) (CONNECT_DATA = (SERVICE_NAME = ORCL) (SID = ORCL)))');
+include_once("config.php");
 
-//$conn = oci_pconnect("vkhurana","pulsar220", "oracla.cise.ufl.edu:1521/orcl");
    if ($conn)
    {
 	   $b="SELECT * from station_table";
 	   $stid = oci_parse($conn,$b);
 	   oci_execute($stid);
-		$minsum=100;
-		 while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
+	   $minsum=100;
+	   while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
 			$sid=$row[0];
 			$t_lat=round($row[1],2);
 			$t_lng=round($row[2],2);
@@ -135,11 +265,14 @@ $conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL 
 
 			}
 	   }
+	   oci_free_statement($stid);
 	   echo "</br>".$lng."    a   ".$lat."</br>station id=".$msid."</br>";
        //echo "Connected to foo";
 	  
 	
-		 $b="SELECT * from Climate_data where station_id='".$msid."' and humidity >= ".$hum." and wind_speed >= ".$wind." and temperature >= ".$tem;
+		 $b="SELECT * from Climate_data where station_id='".$msid."' and humidity >= ".$hum." and wind_speed >= ".$wind.
+		 " and temperature >= ".$tem." and pressure >= ".$pre." and rainfall >= ".$rf;//."and MONTH(Date) >= ".$mf." AND YEAR(Date) >= ".$yf.
+		 //" and MONTH(Date) <= ".$mt." AND YEAR(Date) <= ".$yt;
 		// echo $b;
 	   $stid = oci_parse($conn,$b);
 	   oci_execute($stid);
@@ -173,7 +306,8 @@ $conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL 
    
 	 
 	   }
-			echo "</div>";	   
+			echo "</div>";	 
+	   oci_free_statement($stid);  
        oci_close($conn);
    
    }
@@ -181,5 +315,5 @@ $conn= oci_connect("vkhurana","pulsar220", '(DESCRIPTION = (ADDRESS = (PROTOCOL 
    {
        die("could not connect to foo");
    }
-
+include("footer.html");
 ?>
