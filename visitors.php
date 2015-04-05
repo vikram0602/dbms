@@ -1,4 +1,4 @@
-<?php include("template.php"); ?>
+<?php include("noside.php"); ?>
 <?php include("config.php"); ?>
 
 <h1> Welcome, Visitor! </h1>
@@ -20,20 +20,20 @@ echo $station_id;
 include("config.php");
 
 //Queries
-$maxTemp_b="SELECT max(temperature) from climate_data where station_id=:station_id";
-$minTemp_b="SELECT min(temperature) from climate_data where station_id=:station_id";
+$maxTemp_b="SELECT temperature,time_stamp from climate_data where station_id=:station_id order by temperature desc";
+$minTemp_b="SELECT temperature,time_stamp from climate_data where station_id=:station_id order by temperature asc";
 $avgTemp_b="SELECT avg(temperature) from climate_data where station_id=:station_id";
-$maxHum_b="SELECT max(humidity) from climate_data where station_id=:station_id";
-$minHum_b="SELECT min(humidity) from climate_data where station_id=:station_id";
+$maxHum_b="SELECT humidity,time_stamp from climate_data where station_id=:station_id order by humidity desc";
+$minHum_b="SELECT humidity,time_stamp from climate_data where station_id=:station_id order by humidity asc";
 $avgHum_b="SELECT avg(humidity) from climate_data where station_id=:station_id";
-$maxPressure_b="SELECT max(pressure) from climate_data where station_id=:station_id";
-$minPressure_b="SELECT min(pressure) from climate_data where station_id=:station_id";
+$maxPressure_b="SELECT pressure,time_stamp from climate_data where station_id=:station_id order by pressure desc";
+$minPressure_b="SELECT pressure,time_stamp from climate_data where station_id=:station_id order by pressure asc";
 $avgPressure_b="SELECT avg(pressure) from climate_data where station_id=:station_id";
-$maxWind_b="SELECT max(wind_speed) from climate_data where station_id=:station_id";
-$minWind_b="SELECT min(wind_speed) from climate_data where station_id=:station_id";
+$maxWind_b="SELECT wind_speed,time_stamp from climate_data where station_id=:station_id order by wind_speed desc";
+$minWind_b="SELECT wind_speed,time_stamp from climate_data where station_id=:station_id order by wind_speed asc";
 $avgWind_b="SELECT avg(wind_speed) from climate_data where station_id=:station_id";
-$maxRainfall_b="SELECT max(rainfall) from climate_data where station_id=:station_id";
-$minRainfall_b="SELECT min(rainfall) from climate_data where station_id=:station_id";
+$maxRainfall_b="SELECT rainfall,time_stamp from climate_data where station_id=:station_id order by rainfall desc";
+$minRainfall_b="SELECT rainfall,time_stamp from climate_data where station_id=:station_id order by rainfall asc";
 $avgRainfall_b="SELECT avg(rainfall) from climate_data where station_id=:station_id";
 
 //Prepare the statements
@@ -89,42 +89,67 @@ if (!$conn) {
   oci_execute($maxWind_s);
   oci_execute($minWind_s);
   oci_execute($avgWind_s);
-  //Collect results
-  $maxTemp_v = round(oci_fetch_array($maxTemp_s, OCI_BOTH)[0],2);
-  $minTemp_v = round(oci_fetch_array($minTemp_s, OCI_BOTH)[0],2);
-  $avgTemp_v = round(oci_fetch_array($avgTemp_s, OCI_BOTH)[0],2);
-  $maxHum_v = round(oci_fetch_array($maxHum_s, OCI_BOTH)[0],2);
-  $minHum_v = round(oci_fetch_array($minHum_s, OCI_BOTH)[0],2);
-  $avgHum_v = round(oci_fetch_array($avgHum_s, OCI_BOTH)[0],2);
-  $maxPressure_v = round(oci_fetch_array($maxPressure_s, OCI_BOTH)[0],2);
-  $minPressure_v = round(oci_fetch_array($minPressure_s, OCI_BOTH)[0],2);
-  $avgPressure_v = round(oci_fetch_array($avgPressure_s, OCI_BOTH)[0],2);
-  $maxRainfall_v = round(oci_fetch_array($maxRainfall_s, OCI_BOTH)[0],2);
-  $minRainfall_v = round(oci_fetch_array($minRainfall_s, OCI_BOTH)[0],2);
-  $avgRainfall_v = round(oci_fetch_array($avgRainfall_s, OCI_BOTH)[0],2);
-  $maxWind_v = round(oci_fetch_array($maxWind_s, OCI_BOTH)[0],2);
-  $minWind_v = round(oci_fetch_array($minWind_s, OCI_BOTH)[0],2);
-  $avgWind_v = round(oci_fetch_array($avgWind_s, OCI_BOTH)[0],2);
-  //Print results to the page
-  echo "<table style=\"width:85%\"><tr><td><u>Parameter</u></td><td><u>Value</u></td><td><u>Units</u></td></tr>";
-  echo "<tr><td>Maximum Temperature</td><td>$maxTemp_v</td><td>Fahrenheit</td></tr>";
-  echo "<tr><td>Average Temperature</td><td>$avgTemp_v</td><td>Fahrenheit</td></tr>";
-  echo "<tr><td>Minimum Temperature</td><td>$minTemp_v</td><td>Fahrenheit</td></tr>";
-  echo "<tr><td>Maximum Humidity</td><td>$maxHum_v</td><td>Dewpoint in Fahrenheit</td></tr>";
-  echo "<tr><td>Average Humidity</td><td>$avgHum_v</td><td>Dewpoint in Fahrenheit</td></tr>";
-  echo "<tr><td>Minimum Humidity</td><td>$minHum_v</td><td>Dewpoint in Fahrenheit</td></tr>";
-  echo "<tr><td>Maximum Pressure</td><td>$maxPressure_v</td><td>Pressure in Millibars</td></tr>";
-  echo "<tr><td>Average Pressure</td><td>$avgPressure_v</td><td>Pressure in Millibars</td></tr>";
-  echo "<tr><td>Minimum Pressure</td><td>$minPressure_v</td><td>Pressure in Millibars</td></tr>";
-  echo "<tr><td>Maximum Rainfall</td><td>$maxRainfall_v</td><td>Inches per Hour</td></tr>";
-  echo "<tr><td>Average Rainfall</td><td>$avgRainfall_v</td><td>Inches per Hour</td></tr>";
-  echo "<tr><td>Minimum Rainfall</td><td>$minRainfall_v</td><td>Inches per Hour</td></tr>";
-  echo "<tr><td>Maximum Windspeed</td><td>$maxWind_v</td><td>Miles per Hour</td></tr>";
-  echo "<tr><td>Average Windspeed</td><td>$avgWind_v</td><td>Miles per Hour</td></tr>";
-  echo "<tr><td>Minimum Windspeed</td><td>$minWind_v</td><td>Miles per Hour</td></tr>";
-  echo "</table>";
-}
 
+  //Collect results
+  $maxTemp_r = oci_fetch_array($maxTemp_s,OCI_BOTH);
+  $minTemp_r = oci_fetch_array($minTemp_s,OCI_BOTH);
+  $avgTemp_v = round(oci_fetch_array($avgTemp_s,OCI_BOTH)[0],2);
+  $maxHum_r = oci_fetch_array($maxHum_s,OCI_BOTH);
+  $minHum_r = oci_fetch_array($minHum_s,OCI_BOTH);
+  $avgHum_v = round(oci_fetch_array($avgHum_s,OCI_BOTH)[0],2);
+  $maxPressure_r = oci_fetch_array($maxPressure_s,OCI_BOTH);
+  $minPressure_r = oci_fetch_array($minPressure_s,OCI_BOTH);
+  $avgPressure_v = round(oci_fetch_array($avgPressure_s,OCI_BOTH)[0],2);
+  $maxRainfall_r = oci_fetch_array($maxRainfall_s,OCI_BOTH);
+  $minRainfall_r = oci_fetch_array($minRainfall_s,OCI_BOTH);
+  $avgRainfall_v = round(oci_fetch_array($avgRainfall_s,OCI_BOTH)[0],2);
+  $maxWind_r = oci_fetch_array($maxWind_s,OCI_BOTH);
+  $minWind_r = oci_fetch_array($minWind_s,OCI_BOTH);
+  $avgWind_v = round(oci_fetch_array($avgWind_s,OCI_BOTH)[0],2);
+
+  //Extract max/min values
+  $maxTemp_v = round($maxTemp_r[0],2);
+  $minTemp_v = round($minTemp_r[0],2);
+  $maxHum_v = round($maxHum_r[0],2);
+  $minHum_v = round($minHum_r[0],2);
+  $maxPressure_v = round($maxPressure_r[0],2);
+  $minPressure_v = round($minPressure_r[0],2);
+  $maxRainfall_v = round($maxRainfall_r[0],2);
+  $minRainfall_v = round($minRainfall_r[0],2);
+  $maxWind_v = round($maxWind_r[0],2);
+  $minWind_v = round($minWind_r[0],2);
+
+  //Date handling
+  $maxTemp_d = $maxTemp_r[1];
+  $minTemp_d = $minTemp_r[1];
+  $maxPressure_d = $maxPressure_r[1];
+  $minPressure_d = $minPressure_r[1];
+  $maxHum_d = $maxHum_r[1];
+  $minHum_d = $minHum_r[1];
+  $maxRainfall_d = $maxRainfall_r[1];
+  $minRainfall_d = $minRainfall_r[1];
+  $maxWind_d = $maxWind_r[1];
+  $minWind_d = $minWind_r[1];
+
+  //Print results to the page
+  echo "<table style=\"width:85%\"><tr><td><u>Parameter</u></td><td><u>Value</u></td><td><u>Event Date</u></td><td><u>Units</u></td></tr>";
+  echo "<tr><td>Maximum Temperature</td><td>$maxTemp_v</td><td>$maxTemp_d</td><td>Fahrenheit</td></tr>";
+  echo "<tr><td>Average Temperature</td><td>$avgTemp_v</td><td>None</td><td>Fahrenheit</td></tr>";
+  echo "<tr><td>Minimum Temperature</td><td>$minTemp_v</td><td>$minTemp_d</td><td>Fahrenheit</td></tr>";
+  echo "<tr><td>Maximum Humidity</td><td>$maxHum_v</td><td>$maxHum_d</td><td>Dewpoint in Fahrenheit</td></tr>";
+  echo "<tr><td>Average Humidity</td><td>$avgHum_v</td><td>None</td><td>Dewpoint in Fahrenheit</td></tr>";
+  echo "<tr><td>Minimum Humidity</td><td>$minHum_v</td><td>$minHum_d</td><td>Dewpoint in Fahrenheit</td></tr>";
+  echo "<tr><td>Maximum Pressure</td><td>$maxPressure_v</td><td>$maxPressure_d</td><td>Pressure in Millibars</td></tr>";
+  echo "<tr><td>Average Pressure</td><td>$avgPressure_v</td><td>None</td><td>Pressure in Millibars</td></tr>";
+  echo "<tr><td>Minimum Pressure</td><td>$minPressure_v</td><td>$minPressure_d</td><td>Pressure in Millibars</td></tr>";
+  echo "<tr><td>Maximum Rainfall</td><td>$maxRainfall_v</td><td>$maxRainfall_d</td><td>Inches per Hour</td></tr>";
+  echo "<tr><td>Average Rainfall</td><td>$avgRainfall_v</td><td>None</td><td>Inches per Hour</td></tr>";
+  echo "<tr><td>Minimum Rainfall</td><td>$minRainfall_v</td><td>$minRainfall_d</td><td>Inches per Hour</td></tr>";
+  echo "<tr><td>Maximum Windspeed</td><td>$maxWind_v</td><td>$maxWind_d</td><td>Miles per Hour</td></tr>";
+  echo "<tr><td>Average Windspeed</td><td>$avgWind_v</td><td>None</td><td>Miles per Hour</td></tr>";
+  echo "<tr><td>Minimum Windspeed</td><td>$minWind_v</td><td>$minWind_d</td><td>Miles per Hour</td></tr>";
+  echo "</table>";
+} 
 
 //Free unused resources
 oci_free_statement($maxTemp_s);
