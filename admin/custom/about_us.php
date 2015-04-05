@@ -1,0 +1,4 @@
+<?php echo "<h1>About Us 
+We serve students and districts all over the US and the World.
+Why choose FLVS? Watch this video.Florida Virtual School (FLVS) is an established leader in developing and providing virtual K-12 education solutions to students all over Florida, the U.S. and the world. A nationally recognized e-Learning model and recipient of numerous awards, FLVS was founded in 1997 and was the country's first, state-wide Internet-based public high school. Today, FLVS serves students in grades K-12 and provides a variety of custom solutions for schools and districts to meet student needs.</h1>";
+?>

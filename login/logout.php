@@ -15,7 +15,7 @@
  unset($_SESSION["CurrentUserType"]);
  unset($_SESSION["CurrentUserName"]);
  session_destroy();
- header('Location: index.php');
+ header('Location: ../index.php');
  ?>
   
  </body>

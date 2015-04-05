@@ -85,6 +85,33 @@
 									<li><a href="index.php#login">Login</a></li>
 									<li><a href="contact.php">contact us</a></li>
 									<li><a href="terms.php">Terms of Use</a></li>
+									<?php
+include('config.php');
+
+if ($conn)
+				{
+					 $b="SELECT * from newpage";//writing a query we want to execute, store in a variable for convenience!
+	   $stid = oci_parse($conn,$b);//parsing your query
+	   oci_execute($stid);// execute that parsed query
+						while($row = oci_fetch_array($stid,OCI_BOTH))
+  							{
+							
+						echo '<li><a href="name.php?title='.$row["0"].'"title="'.$row["0"].'">'.$row["0"].'</a></li>';
+								
+							}
+							 oci_free_statement($stid);
+	 oci_close($conn);
+					
+					
+				}
+else
+				{
+						echo "Failed to connect : ";
+				}
+				
+				
+?>
+									
 								</ul>
 							</section>
 							<section>
