@@ -1,5 +1,6 @@
 <?php include("template.php"); ?>
 
+
 <form action="contact.php" method="POST">
 Email: 
 <input type="text" name="email">
@@ -17,6 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($_SESSION["CurrentUserType"]=="guest") {
       $email = (string)$_POST["email"];
       $message = (string)$_POST["message"];
+      if (empty ($email) or empty( $message )) {
+        echo "<p> Cannot be left empty</p>";
+        die();
+      }
       $result = oci_parse($conn,"INSERT INTO CONTACT VALUE(:email,:message)");
       oci_bind_by_name($result,":email",$email);
       oci_bind_by_name($result,":message",$message);

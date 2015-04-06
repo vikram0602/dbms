@@ -4,9 +4,15 @@ include('../config.php');
 require_once('jpgraph.php');
 require_once('jpgraph_line.php');
 
+//Deny users who are not logged in
+session_start();
+if ((string)$_SESSION["CurrentUser"] == false) {
+  die("<p>Access Denied</p>");
+}
+
 //DB
 $station_id = (string)$_GET["station_id"];
-$temp_agg_b="SELECT avg(temperature) as tmp,to_char(time_stamp,'MM') as dte from climate_data where station_id=:station_id group by TO_CHAR(time_stamp,'MM') order by dte asc";
+$temp_agg_b="SELECT avg(rainfall) as tmp,to_char(time_stamp,'MM') as dte from climate_data where station_id=:station_id group by TO_CHAR(time_stamp,'MM') order by dte asc";
 $temp_agg_s = oci_parse($conn,$temp_agg_b);
 oci_bind_by_name($temp_agg_s,":station_id",$station_id);
 oci_execute($temp_agg_s);
@@ -23,7 +29,7 @@ $graph = new Graph(600,600);
 $graph->SetScale("textlin");
 $theme_class=new UniversalTheme;
 $graph->SetTheme($theme_class);
-$graph->title->Set('Aggregate Temperature Year View');
+$graph->title->Set('Aggregate Rainfall Year View');
 $graph->SetBox(true);
 
 $graph->yaxis->HideZeroLabel();
@@ -34,19 +40,15 @@ $graph->xgrid->SetLineStyle("solid");
 $graph->xgrid->SetColor('#E3E3E3');
 $graph->xaxis->scale->ticks->Set(1);
 $graph->xaxis->title->Set("Monthly Index                                                                         ");
-$graph->yaxis->title->Set("Temperature (F°)");
+$graph->yaxis->title->Set("Hourly Rainfall Rate (in)");
 
 $p1 = new LinePlot($temp_temps,$temp_dates);
 $graph->Add($p1);
-$p1->SetFillGradient('yellow','red');
+$p1->SetFillGradient('darkblue','lightblue');
 $p1->SetStepStyle();
 $p1->SetColor("#6495ED");
-$p1->SetLegend('Characteristic Temperature');
+$p1->SetLegend('Characteristic Rainfall Rate');
 $graph->legend->SetFrameWeight(1);
-
-/*var_dump($temp_temps);
-var_dump($temp_dates);
-die();*/
 
 $graph->Stroke(); //Draw graph
 
