@@ -5,10 +5,10 @@ require_once('jpgraph.php');
 require_once('jpgraph_line.php');
 
 //Deny users who are not logged in
-session_start();
+/*session_start();
 if ((string)$_SESSION["CurrentUser"] == false) {
   die("<p>Access Denied</p>");
-}
+}*/
 
 //DB
 $station_id = (string)$_GET["station_id"];

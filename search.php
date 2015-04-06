@@ -74,8 +74,8 @@ if (isset($_GET["date4"]))
 	$yt=$_GET["date4"];
 
 if(!isset($hum) or $hum=='aa' or $hum==NULL)
-	$hum=-100;
-if(!isset($win) or $wind=='aa' or $wind==NULL)
+	$hum=0;
+if(!isset($wind) or $wind=='aa' or $wind==NULL)
 	$wind=0;
 if(!isset($tem) or $tem=='aa' or $tem== NULL)
 	$tem=-20;
@@ -112,26 +112,62 @@ $msid="100";
 				<option value="20" >> 20</option>
 				<option value="30" >> 30</option>
 				<option value="50"  >> 50</option>
+				<option value="60"  >> 60</option>
+				<option value="70"  >> 70</option>
+				<option value="80"  >> 80</option>
+				<option value="-10" >< 10</option>
+				<option value="-20" >< 20</option>
+				<option value="-30" >< 30</option>
+				<option value="-50"  >< 50</option>
+				<option value="-60"  >< 60</option>
+				<option value="-70"  >< 70</option>
+				<option value="-80"  >< 80</option>
           </select>
 		</div>
 		<div class='Ce'>
 	 	 Wind_Speed:<select id="wind" name="wind"   > 
 		 				<option value="aa" selected="selected" ></option>
 		 <option value="0" >> 0</option>
+				<option value="1" >> 1</option>
 				<option value="2" >> 2</option>
+				<option value="3" >> 3</option>
 				<option value="4" >> 4</option>
+				<option value="5" >> 5</option>
 				<option value="6" >> 6</option>
-				<option value="10" >> 10</option>
+				<option value="7" >> 7</option>
+				<option value="8" >> 8</option>
+				<option value="-1" >< 1</option>
+				<option value="-2" >< 2</option>
+				<option value="-3" >< 3</option>
+				<option value="-4" >< 4</option>
+				<option value="-5" >< 5</option>
+				<option value="-6" >< 6</option>
+				<option value="-7" >< 7</option>
+				<option value="-8" >< 8</option>
           </select>
 		 </div>
 		<div class='Ce'>
 	 Temperature:<select id="temperature" name="temperature"   > 	
 	 				<option value="aa" selected="selected" ></option>
 	  <option value="0" >> 0</option>
+	  			<option value="-30" >> -30</option>
+				<option value="-20" >> -20</option>
+				<option value="-10" >> -10</option>
 				<option value="10" >> 10</option>
 				<option value="20" >> 20</option>
 				<option value="50" >> 50</option>
 				<option value="70" >> 70</option>
+				<option value="80" >> 80</option>
+				<option value="90" >> 90</option>
+				<option value="-2030" >< -30</option>
+				<option value="-2020" >< -20</option>
+				<option value="-2010" >< -10</option>
+				<option value="-1990" >< 10</option>
+				<option value="-1980" >< 20</option>
+				<option value="-1950" >< 50</option>
+				<option value="-1930" >< 70</option>
+				<option value="-1920" >< 80</option>
+				<option value="-1910" >< 90</option>
           </select>
 		  </div>
 
@@ -139,10 +175,16 @@ $msid="100";
 	 Pressure:<select id="pressure" name="pressure"   > 	
 	 				<option value="aa" selected="selected" ></option>
 	  <option value="0" >> 0</option>
-				<option value="800" >> 800</option>
+				<option value="980" >> 980</option>
+				<option value="990" >> 990</option>
 				<option value="1000" >> 1000</option>
-				<option value="1200" >> 1200</option>
-				<option value="1400" >> 1400</option>
+				<option value="1010" >> 1010</option>
+				<option value="1020" >> 1020</option>
+				<option value="-980" >< 980</option>
+				<option value="-990" >< 990</option>
+				<option value="-1000" >< 1000</option>
+				<option value="-1010" >< 1010</option>
+				<option value="-1020" >< 1020</option>
           </select>
 		  </div>
 
@@ -150,11 +192,16 @@ $msid="100";
 	 Rainfall:<select id="rainfall" name="rainfall"   > 	
 	 				<option value="aa" selected="selected" ></option>
 	            <option value="0" >> 0</option>
-	            <option value="0.5">> 0.5</option>
-				<option value="1" >> 1</option>
-				<option value="2" >> 2</option>
-				<option value="5" >> 5</option>
-				<option value="7" >> 7</option>
+	            <option value="0.01">> 0.01</option>
+				<option value="0.02" >> 0.02</option>
+				<option value="0.03" >> 0.03</option>
+				<option value="0.04" >> 0.04</option>
+				<option value="0.05" >> 0.05</option>
+				<option value="-0.01">< 0.01</option>
+				<option value="-0.02" >< 0.02</option>
+				<option value="-0.03" >< 0.03</option>
+				<option value="-0.04" >< 0.04</option>
+				<option value="-0.05" >< 0.05</option>
           </select>
 		  </div>
 
@@ -271,8 +318,42 @@ include_once("config.php");
        //echo "Connected to foo";
 	  
 	
-		 $b="SELECT * from Climate_data where station_id='".$msid."' and humidity >= ".$hum." and wind_speed >= ".$wind.
-		 " and temperature >= ".$tem." and pressure >= ".$pre." and rainfall >= ".$rf." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
+		//Ascribe filtering directions. HACK! HACK! HACK!
+	    //Should give user a more explicit choice of filter direction
+	    if ($hum < 0) {
+	    	$humidity_dir = "<";
+	    	$hum = -$hum;
+	    } else {
+	    	$humidity_dir = ">=";
+	    }
+	    if ($wind < 0) {
+	    	$wind_dir = "<";
+	    	$wind = -$wind;
+	    } else {
+	    	$wind_dir = ">=";
+	    }
+	    if ($tem < -1000) {
+	    	$tem += 2000;
+	    	$tem_dir = "<";
+	    } else {
+	    	$tem_dir = ">=";
+	    }
+	    if ($pre < 0) {
+	    	$pre = -$pre;
+	    	$pre_dir = "<";
+	    } else {
+	    	$pre_dir = ">=";
+	    }
+	    if ($rf < 0) {
+	    	$rf = -$rf;
+	    	$rf_dir = "<";
+	    } else {
+	    	$rf_dir = ">=";
+	    }
+
+
+		 $b="SELECT * from Climate_data where station_id='".$msid."' and humidity $humidity_dir ".$hum." and wind_speed $wind_dir ".$wind.
+		 " and temperature $tem_dir ".$tem." and pressure $pre_dir ".$pre." and rainfall >= ".$rf." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
 AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 		
 		//die($b);
