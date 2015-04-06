@@ -151,6 +151,10 @@ if (!$conn) {
   echo "<tr><td>Minimum Windspeed</td><td>$minWind_v</td><td>$minWind_d</td><td>Miles per Hour (avg)</td></tr>";
   echo "</table>";
   echo "<img src=\"jpgraph/graph_temperature.php?station_id=$station_id\">";
+  echo "<img src=\"jpgraph/graph_humidity.php?station_id=$station_id\">";
+  echo "<img src=\"jpgraph/graph_rainfall.php?station_id=$station_id\">";
+  echo "<img src=\"jpgraph/graph_pressure.php?station_id=$station_id\">";
+  echo "<img src=\"jpgraph/graph_wind.php?station_id=$station_id&width=1000\">";  
 } 
 
 //Free unused resources

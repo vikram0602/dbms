@@ -4,18 +4,18 @@ include('../config.php');
 require_once('jpgraph.php');
 require_once('jpgraph_line.php');
 
-//Deny users who are not logged in
-/*session_start();
-if ((string)$_SESSION["CurrentUser"] == false) {
-  die("<p>Access Denied</p>");
-}*/
-
 //DB
 $station_id = (string)$_GET["station_id"];
 $temp_agg_b="SELECT avg(wind_speed) as tmp,to_char(time_stamp,'MM') as dte from climate_data where station_id=:station_id group by TO_CHAR(time_stamp,'MM') order by dte asc";
 $temp_agg_s = oci_parse($conn,$temp_agg_b);
 oci_bind_by_name($temp_agg_s,":station_id",$station_id);
 oci_execute($temp_agg_s);
+
+if (isset($_GET["width"])) {
+  $width = (string)$_GET["width"];
+} else {
+  $width = 600;
+}
 
 //Graph setup
 $temp_dates = array();
@@ -25,7 +25,7 @@ while (($row = oci_fetch_array($temp_agg_s,OCI_BOTH)) != false) {
   array_push($temp_dates,(int)$row[1] - 1);
 }
 
-$graph = new Graph(600,600);
+$graph = new Graph($width,600);
 $graph->SetScale("textlin");
 $theme_class=new UniversalTheme;
 $graph->SetTheme($theme_class);

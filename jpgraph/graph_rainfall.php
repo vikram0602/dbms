@@ -4,12 +4,6 @@ include('../config.php');
 require_once('jpgraph.php');
 require_once('jpgraph_line.php');
 
-//Deny users who are not logged in
-session_start();
-if ((string)$_SESSION["CurrentUser"] == false) {
-  die("<p>Access Denied</p>");
-}
-
 //DB
 $station_id = (string)$_GET["station_id"];
 $temp_agg_b="SELECT avg(rainfall) as tmp,to_char(time_stamp,'MM') as dte from climate_data where station_id=:station_id group by TO_CHAR(time_stamp,'MM') order by dte asc";
