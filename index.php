@@ -81,7 +81,7 @@
 						<h2>Climatic Research</h2>
 						<span>Get started</span>
 						<form role="form" action="pre_search.php" method="post">
-						<input type="text" class="form-control" name="city" id="email" placeholder="Enter city" >
+						<input type="text" class="form-control" name="city" id="email" placeholder="Enter city, state, zip code, or other location information..." >
 						</form>
 						<p></p>
 					</section>
@@ -138,12 +138,12 @@
 		</br>
 			<div>
 					
-				<button type="submit" class="btn btn-default">Signin</button>
+				<button type="submit" class="btn btn-default">Sign In</button>
 				
-				<button type="button" class="btn btn-info">
+				<button type="button" class="btn btn-default">
 				<a href="login/forget.php" title="Login" rel="home" >Forget Password</a>
 				</button>
-				<button type="button" class="btn btn-info">
+				<button type="button" class="btn btn-default">
 				<a href="login/signup.php" title="signup" rel="home" >Not A Member Yet!</a>
 				</button>
 			
@@ -161,25 +161,35 @@
 						<span class="byline">Want to know more about us</span>
 					</header>
 					<div class="row">
-						<div class="3u">
+						<div class="4u">
 							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
 							<h3>James Birdsong</h3>
 							<p>Backend Developer</p>
 						</div>
-						<div class="3u">
+						<div class="4u">
 							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
 							<h3>Ashish Agarwal</h3>
 							<p>Project manager</p>
 						</div>
-						<div class="3u">
+						<div class="4u">
 							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
 							<h3>Sanjay</h3>
 							<p>Associate Frontend Developer</p>
 						</div>
-						<div class="3u">
+						<div class="4u">
 							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
 							<h3>Vikram khurana</h3>
 							<p>Lead Frontend Developer</p>
+						</div>
+						<div class="4u">
+							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
+							<h3>Dr. Markus Schneider</h3>
+							<p>Class Instructor</p>
+						</div>
+						<div class="4u">
+							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
+							<h3>Siliang Xia</h3>
+							<p>Project Assessment and Inspiration</p>
 						</div>
 					</div>
 				</section>
