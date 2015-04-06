@@ -9,7 +9,7 @@ if(isset($_SESSION['CurrentUser']))
 {
 	if($_SESSION['CurrentUserType']=="admin")
 		 header("Location: admin/adminaccount.php");
-	 if($_SESSION['CurrentUserType']=="admin")
+	 if($_SESSION['CurrentUserType']=="guest")
 		 header("Location: guest/guestaccount.php");
 
 }	
