@@ -182,9 +182,9 @@
 							<p>Lead Frontend Developer</p>
 						</div>
 						<div class="4u">
-							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
+							<a href="http://www.cise.ufl.edu/~mschneid/" class="image"><img src="images/placeholder.png" alt=""></a>
 							<h3>Dr. Markus Schneider</h3>
-							<p>Class Instructor</p>
+							<p>Databases Instructor</p>
 						</div>
 						<div class="4u">
 							<a href="#" class="image"><img src="images/placeholder.png" alt=""></a>
