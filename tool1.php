@@ -1,4 +1,4 @@
-<title>ANALYSIS</title>
+<title> TEMPERATURE ANALYSIS</title>
 <style type="text/css">
     .Ta
     {
@@ -54,16 +54,8 @@ if (isset($_GET["lng1"]))
 	$lng=(float)$_GET["lng1"];
 if (isset($_GET["lat1"]))
 	$lat=(float)$_GET["lat1"];
-if (isset($_GET["humidity"]))
-	$hum= (float)$_GET["humidity"];
-if (isset($_GET["wind"]))
-	$wind= (float)$_GET["wind"];
-if (isset($_GET["temperature"]))
-	$tem= (float)$_GET["temperature"];
 if (isset($_GET["pressure"]))
-	$pre=(float)$_GET["pressure"];
-if (isset($_GET["rainfall"]))
-	$rf=(float)$_GET["rainfall"];
+	$tem= (float)$_GET["pressure"];
 if (isset($_GET["date1"]))
 	$mf=$_GET["date1"];
 if (isset($_GET["date2"]))
@@ -73,16 +65,9 @@ if (isset($_GET["date3"]))
 if (isset($_GET["date4"]))
 	$yt=$_GET["date4"];
 
-if(!isset($hum) or $hum=='aa' or $hum==NULL)
-	$hum=-100;
-if(!isset($win) or $wind=='aa' or $wind==NULL)
-	$wind=0;
+
 if(!isset($tem) or $tem=='aa' or $tem== NULL)
 	$tem=-20;
-if(!isset($pre) or $pre=='aa' or $pre== NULL)
-	$pre=0;
-if(!isset($rf) or $rf=='aa' or $rf== NULL)
-	$rf=0;
 if(!isset($mf) or $mf=='aa' or $mf== NULL)
 	$mf=01;
 if(!isset($yf) or $yf=='aa' or $yf== NULL)
@@ -94,48 +79,19 @@ if(!isset($yt) or $yt=='aa' or $yt== NULL)
 
 $lng1=round($lng,2);
 $lat1=round($lat,2);
-$msid="100";
+$msid="722110";
 //echo $lng1."          ".$lat1."         ".$hum. "      ".$wind."    ".$tem;
 ?>
 <body>
-<h1> Data Preview </h1>
-<form   action="search.php" method="get" id="form2">
+<h1> Temperature Preview </h1>
+<form   action="tool1.php" method="get" id="form2">
 	 <input type="hidden" id="lat1" name="lat1" value="<?php echo $lat ?>"  >
 	 <input type="hidden" id="lng1" name="lng1" value="<?php echo $lng ?>" > 
 	 <div class='Ta'>
 	 <div class='Ro'>
-	 <div class='Ce'>
-	 Humidity:  <select id="humidity" name="humidity"  > 
-				<option value="aa" selected="selected" ></option>
-				<option value="0" >> 0</option>
-				<option value="10" >> 10</option>
-				<option value="20" >> 20</option>
-				<option value="30" >> 30</option>
-				<option value="50"  >> 50</option>
-          </select>
-		</div>
+	 
+		
 		<div class='Ce'>
-	 	 Wind_Speed:<select id="wind" name="wind"   > 
-		 				<option value="aa" selected="selected" ></option>
-		 <option value="0" >> 0</option>
-				<option value="2" >> 2</option>
-				<option value="4" >> 4</option>
-				<option value="6" >> 6</option>
-				<option value="10" >> 10</option>
-          </select>
-		 </div>
-		<div class='Ce'>
-	 Temperature:<select id="temperature" name="temperature"   > 	
-	 				<option value="aa" selected="selected" ></option>
-	  <option value="0" >> 0</option>
-				<option value="10" >> 10</option>
-				<option value="20" >> 20</option>
-				<option value="50" >> 50</option>
-				<option value="70" >> 70</option>
-          </select>
-		  </div>
-
-		  <div class='Ce'>
 	 Pressure:<select id="pressure" name="pressure"   > 	
 	 				<option value="aa" selected="selected" ></option>
 	  <option value="0" >> 0</option>
@@ -146,17 +102,9 @@ $msid="100";
           </select>
 		  </div>
 
-		  <div class='Ce'>
-	 Rainfall:<select id="rainfall" name="rainfall"   > 	
-	 				<option value="aa" selected="selected" ></option>
-	            <option value="0" >> 0</option>
-	            <option value="0.5">> 0.5</option>
-				<option value="1" >> 1</option>
-				<option value="2" >> 2</option>
-				<option value="5" >> 5</option>
-				<option value="7" >> 7</option>
-          </select>
-		  </div>
+		  
+
+		  
 
 		  <div class='Ce'>
 	 	 Month From:<select id="date1" name="date1"   > 
@@ -177,7 +125,7 @@ $msid="100";
           </select>
 		 </div>
          <div class='Ce'>
-		 From:<select id="date2" name="date2"   > 
+		 Year From:<select id="date2" name="date2"   > 
 		 				<option value="aa" selected="selected" ></option>
 		        <option value="2004" >2004</option>
 				<option value="2005" >2005</option>
@@ -214,7 +162,7 @@ $msid="100";
 		 </div>
 
           <div class='Ce'>
-		  Till:<select id="date4" name="date4" > 
+		 Year Till:<select id="date4" name="date4" > 
 		 				<option value="aa" selected="selected" ></option>
 		        <option value="2004" >2004</option>
 				<option value="2005" >2005</option>
@@ -267,12 +215,11 @@ include_once("config.php");
 			}
 	   }
 	   oci_free_statement($stid);
-	   echo "</br> Longitude- ".$lng." Latitude- ".$lat."</br>Station id=".$msid."</br>"; 
+	   echo "</br>".$lng."    a   ".$lat."</br>station id=".$msid."</br>"; 
        //echo "Connected to foo";
 	  
 	
-		 $b="SELECT * from Climate_data where station_id='".$msid."' and humidity >= ".$hum." and wind_speed >= ".$wind.
-		 " and temperature >= ".$tem." and pressure >= ".$pre." and rainfall >= ".$rf." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
+		 $b="SELECT * from Climate_data where station_id='".$msid."and pressure >= ".$tem."and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
 AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 		
 		//die($b);
@@ -283,10 +230,7 @@ AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 						echo '<div class="Heading">
 								<div class="Ce">Station id</div>
 								
-								<div class="Ce">Pressure</div>
-								<div class="Ce">Humidity</div>
-								<div class="Ce">Rainfall</div>
-								<div class="Ce">Wind speed</div>
+								
 								<div class="Ce">Temperature</div>
 								<div class="Ce">Date</div>
  								 </div>';
