@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-
-
-<html>
-<head>
-   
-</head>
-<body>
 <?php
 include("noside.php");
 $city=$_POST["city"];
