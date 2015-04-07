@@ -15,7 +15,7 @@ Message:
 include("config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if ($_SESSION["CurrentUserType"]=="guest") {
+  if ($_SESSION["CurrentUserType"]=="guest" or $_SESSION["CurrentUserType"]=="admin") {
       $email = (string)$_POST["email"];
       $message = (string)$_POST["message"];
       if (empty ($email) or empty( $message )) {

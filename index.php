@@ -144,7 +144,7 @@
 				<a href="login/forget.php" title="Login" rel="home" >Forget Password</a>
 				</button>
 				<button type="button" class="btn btn-default">
-				<a href="login/signup.php" title="signup" rel="home" >Not A Member Yet!</a>
+				<a href="login/signup.php" title="signup" rel="home" >Not A Member Yet?</a>
 				</button>
 			
 			</div>	
@@ -158,7 +158,7 @@
 				<section id="team" class="container">
 					<header class="major">
 						<h2 >About Us</h2>
-						<span class="byline">Want to know more about us</span>
+						<span class="byline">Want to know more about us?</span>
 					</header>
 					<div class="row">
 						<div class="4u">
