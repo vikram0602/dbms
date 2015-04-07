@@ -6,7 +6,7 @@
 
 <?php //Intro message
 if (!empty($_GET['station_id'])) {
-  $station_id = (string)$_GET[$station_id];
+  $station_id = (string)$_GET["station_id"];
 } else {
   $station_id = "722060"; //Gainesville
 }

@@ -276,25 +276,6 @@ $msid="100";
 				<option value="2014" >2014</option>
 				
 
-          </select>
-		 </div>
-
-	 <div class='Ce'> 
-<input type="submit" value="SEARCH">
-	  </div> 
-	  </div></div> 
-	  </form>
-	  <form action="<?php
-	  if (isset($_SESSION["CurrentUser"])) {
-	  	echo "tools.php";
-	  } else {
-	  	echo "visitors.php";
-	  }
-	    ?>" method=post>
-	 <br>
-<input type="submit" value="Continue to Next Page">
-	  </form> 
-</body>
 <?php
 include_once("config.php");
 
@@ -323,7 +304,33 @@ include_once("config.php");
 			}
 	   }
 	   oci_free_statement($stid);
+	?>
+
+
+          </select>
+		 </div>
+
+	 <div class='Ce'> 
+<input type="submit" value="SEARCH">
+	  </div> 
+	  </div></div> 
+	  </form>
+	  <form action="<?php
+	  if (isset($_SESSION["CurrentUser"])) {
+	  	echo "tools.php";
+	  } else {
+	  	echo "visitors.php";
+	  }
+	    ?>" method="get">
+	 <br>
+<input type="hidden" name="station_id" value="<?php echo $msid; ?>">
+<input type="submit" value="Continue to Next Page">
+	  </form> 
+</body>
+
+<?php
 	   echo "</br> Longitude- ".$lng." Latitude- ".$lat."</br>Station id=".$msid."</br>"; 
+
        //echo "Connected to foo";
 	  
 	
