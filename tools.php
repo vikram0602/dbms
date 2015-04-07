@@ -1,4 +1,4 @@
-<?php include("template.html"); ?>
+<?php include("template.php"); ?>
 
 <h1> Filter Tools </h1>
 

@@ -281,10 +281,19 @@ $msid="100";
 
 	 <div class='Ce'> 
 <input type="submit" value="SEARCH">
-	  
 	  </div> 
 	  </div></div> 
 	  </form>
+	  <form action="<?php
+	  if (isset($_SESSION["CurrentUser"])) {
+	  	echo "tools.php";
+	  } else {
+	  	echo "visitors.php";
+	  }
+	    ?>" method=post>
+	 <br>
+<input type="submit" value="Continue to Next Page">
+	  </form> 
 </body>
 <?php
 include_once("config.php");
