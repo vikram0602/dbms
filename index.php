@@ -51,11 +51,17 @@
 										<a href="#about">About Us</a>
 									</li>
 									<li><a href="faq.php">FAQs</a></li>
-									<li><a href="#login">Login</a></li>
+									<?php
+									session_start();
+									if (isset($_SESSION['CurrentUser'])) {
+									  	echo "<li><a href=\"login/logout.php\">Logout</a></li>";
+									  } else {
+									  	echo "<li><a href=\"#login\">Login</a></li>";
+									  }
+									  ?>
 									<li><a href="contact.php">contact us</a></li>
 									<li><a href="terms.php">Terms of Use</a></li>
 									<?php
-									  session_start();
 
 									//echo $_SESSION["CurrentUserName"];
 								//echo '<li><a href="/dbms/admin/adminaccount.php"> hasdhjasdh</a></li>';	//header("location:/dbms/admin/adminaccount.php");

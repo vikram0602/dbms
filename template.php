@@ -44,7 +44,13 @@
 										<a href="index.php#about">About Us</a>
 									</li>
 									<li><a href="faq.php">FAQs</a></li>
-									<li><a href="index.php#login">Login</a></li>
+									<?php
+									  if (isset($_SESSION['CurrentUser'])) {
+									  	echo "<li><a href=\"login/logout.php\">Logout</a></li>";
+									  } else {
+									  	echo "<li><a href=\"index.php#login\">Login</a></li>";
+									  }
+									 ?>
 									<li><a href="contact.php">contact us</a></li>
 									<li><a href="terms.php">Terms of Use</a></li>
 									<?php
