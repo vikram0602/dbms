@@ -5,7 +5,10 @@
 	<meta charset="utf-8">
 	<title>Admin Account</title>
 	<meta name="description" content="description">
-	<meta name="author" content="Admin">
+	<meta name="author" content="Coralix Themes">
+<link rel="shortcut icon" type="image/x-icon" href="/intern123/images/favicon.ico">
+	<link rel="stylesheet" href="/intern123/wp-content/themes/theme1095/style.css" type="text/css" media="screen">
+
 
 
  
@@ -74,11 +77,11 @@ a:hover
 </head>
 
 <body>
- <?php include("admin_template.php"); ?>
+ <?php include("admin_temp.php"); ?>
  
 		<div id="middle-column">
 		</div>
 		
 </body>
-<?php include("footer.html"); ?>
+<?php include("footer.php"); ?>
 </html>

@@ -1,14 +1,44 @@
 <title>Create Page</title>
-<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/intern123/ckeditor/ckeditor.js"></script>
   <?php 
-include("admin_template.php");
+include("admin_temp.php");
 //echo "<h1>Create Form-</h1>";
-include("config.php");
- 
+require_once("config.php");
+ $con1 = mysql_pconnect($host, $username, $password) or trigger_error(mysql_error(),E_USER_ERROR); 
+  mysql_select_db($database, $con1);
 ?>
 <?php
 
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
 
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
 $editFormAction = $_SERVER['PHP_SELF'];
 
 if (isset($_SERVER['QUERY_STRING'])) {
@@ -19,42 +49,45 @@ if (isset($_SERVER['QUERY_STRING'])) {
 if (isset($_POST["MM_insert"]))
 	{
 		if($_POST["MM_insert"] == "form1"){
-				$p=$_POST['ptype'];
+				$p=GetSQLValueString($_POST['ptype'], "text");
 				$p=str_replace("'", "", $p);
 				echo $p;
 				if($p=="content"){
-  $insertSQL = "INSERT INTO newpage (title, ptype,content, meta, m_desc) VALUES ('".$_POST['title1']."','".$_POST['ptype']."','".$_POST['content']."','".$_POST['meta1']."','".$_POST['m_desc']."')";
-                  //echo $insertSQL;
+  $insertSQL = sprintf("INSERT INTO newpage (title, ptype,content, meta, m_desc) VALUES (%s, %s, %s,%s, %s)",
+                       GetSQLValueString($_POST['title1'], "text"),
+					   GetSQLValueString($_POST['ptype'], "text"),
+                       GetSQLValueString($_POST['content'], "text"),
+                       GetSQLValueString($_POST['meta1'], "text"),
+					   GetSQLValueString($_POST['m_desc'], "text"));
 					   }
 					 else
 					 {
- $insertSQL = "INSERT INTO newpage (title, ptype,custom, meta, m_desc) VALUES ('".$_POST['title1']."','".$_POST['ptype']."','".$_POST['custom']."','".$_POST['meta1']."','".$_POST['m_desc']."')";
-
+					 $insertSQL = sprintf("INSERT INTO newpage (title, ptype,custom, meta, m_desc) VALUES (%s, %s, %s,%s, %s)",
+                       GetSQLValueString($_POST['title1'], "text"),
+					   GetSQLValueString($_POST['ptype'], "text"),
+                       GetSQLValueString($_POST['custom'], "text"),
+                       GetSQLValueString($_POST['meta1'], "text"),
+					   GetSQLValueString($_POST['m_desc'], "text"));
 					 }  
-					    $title= $_POST['title1'];
-						$result=oci_parse($conn,$insertSQL);
-					oci_execute($result);
+					    $title= GetSQLValueString($_POST['title1'], "text");
+  $Result1 = mysql_query($insertSQL, $con1) or die(mysql_error());
   				
    		}
-		$b="SELECT * from newpage where title='".$title."'";
- $stid = oci_parse($conn,$b);//parsing your query
-	   oci_execute($stid);
+		$b="SELECT * from newpage where title=".$title;
+ $result3 = mysql_query($b, $con1) or die(mysql_error());
 $a="";
-while($row = oci_fetch_array($stid))
+while($row = mysql_fetch_array($result3))
   							{
-							$a=$row[0];
+							$a=$row['title'];
 							}
-							 $insertGoTo ="../name.php?title=".$a;
- // echo  $insertGoTo;
+							 $insertGoTo ="/intern123/normal/name.php?title=".$a;
+  echo  $insertGoTo;
   if (isset($_SERVER['QUERY_STRING'])) {
     $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
     $insertGoTo .= $_SERVER['QUERY_STRING'];
   }
-//header(sprintf("Location: %s", $insertGoTo));
-oci_free_statement($stid);
-oci_free_statement($result);
+// header(sprintf("Location: %s", $insertGoTo));
 
-	 oci_close($conn);
  }
 	
 
@@ -76,16 +109,14 @@ document.getElementById("custom").style.visibility="visible";
 <script type="text/javascript" src="/intern123/ckeditor/ckeditor.js"></script>
 
 <div>
-<h1>CREATE PAGE</h1><br>
+
 <form id="form1" name="form1" method="post" action="<?php echo $editFormAction; ?>">
   <table width="624" height="304" border="0" >
     <tr valign="baseline">
       <td width="113">Page tiltle </td>
       <td width="501">
-	  
         <input type="text" name="title1" />      </td>
     </tr>
-	
     <tr valign="baseline">
       <td>Page Type </td>
      <!-- <td><p>
@@ -139,5 +170,5 @@ document.getElementById("custom").style.visibility="visible";
 </div>
 <?php
 
-include_once("footer.html");
+include_once("footer.php");
 ?>

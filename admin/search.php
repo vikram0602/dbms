@@ -1,8 +1,9 @@
 <title>Search</title>
 <?php 
-include_once("admin_template.php");
+include_once("admin_temp.php");
  require_once("config.php");
-
+ $con1 = mysql_pconnect($host, $username, $password) or trigger_error(mysql_error(),E_USER_ERROR); 
+  mysql_select_db($database, $con1);
 $editFormAction = $_SERVER['PHP_SELF'];
 
 if (isset($_SERVER['QUERY_STRING'])) {
@@ -18,19 +19,16 @@ if (isset($_POST["MM_search"]))
 
 	$a=1;
 $count=0;
-	
-	 $b="SELECT * from admin";
-	   $stid = oci_parse($conn,$b);
-	   oci_execute($stid);
-
+	$b="SELECT * from admin_details";
+ $result3 = mysql_query($b, $con1) or die(mysql_error());
  echo '<table border=2 ><tr ><td>Sno.</td><td>Admin Id:</td><td>Name</td><td>Contact No.</td><td>Email_ID</td><td>Edit</td><td>Delete</td></tr>';
-								while($row= oci_fetch_array($stid,OCI_BOTH))
+								while($row= mysql_fetch_array($result3))
 								{
 									echo "<tr ><td><b>".$a.".</b></td>";
 									echo "<td>".$row[0]."</td>";
-									echo "<td>".$row[1]."</td>";
-									echo "<td>+91-".$row[3]."</td>";
-									echo "<td>".$row[2]."</td>";	
+									echo "<td>".$row[1]." ".$row[2]."</td>";
+									echo "<td>+91-".$row[4]."</td>";
+									echo "<td>".$row[3]."</td>";	
 									echo '<td><a href="edit-admin1.php?col='.$row[0].'">Edit</td>';
 									echo '<td><a href="delete-admin.php?col='.$row[0].'">Delete</td></tr>';
 									$a++;
@@ -46,20 +44,21 @@ $count=0;
 	if($_POST["MM_search"] == "form2"){
 	$a=1;
 $count=0;
-	$b="SELECT * from guest";
-	   $stid = oci_parse($conn,$b);
-	   oci_execute($stid);
-
- echo '<table border=2 ><tr ><td>Sno.</td><td>Guest Id:</td><td>Name</td><td>Contact No.</td><td>Email_ID</td><td>Edit</td><td>Delete</td></tr>';
-								while($row= oci_fetch_array($stid,OCI_BOTH))
+	$b="SELECT * from faculty_details";
+ $result3 = mysql_query($b, $con1) or die(mysql_error());
+ echo '<table border=2 ><tr ><td>Sno.</td><td>Faculty Id:</td><td>Name</td><td>Description</td><td>Designation</td><td>Contact No.</td><td>Email_ID</td><td>Edit</td><td>Delete</td></tr>';
+								while($row= mysql_fetch_array($result3))
 								{
 									echo "<tr ><td><b>".$a.".</b></td>";
 									echo "<td>".$row[0]."</td>";
-									echo "<td>".$row[1]."</td>";
-									echo "<td>+91-".$row[3]."</td>";
-									echo "<td>".$row[2]."</td>";	
-									echo '<td><a href="edit-guest.php?col='.$row[0].'">Edit</td>';
-									echo '<td><a href="delete-guest.php?col='.$row[0].'">Delete</td></tr>';
+									echo "<td>".$row[1]." ".$row[2]."</td>";
+									echo "<td>".$row[7]."</td>";
+									echo "<td>".$row[8]."</td>";
+									echo "<td>+91-".$row[4]."</td>";
+									echo "<td>".$row[3]."</td>";
+								
+									echo '<td><a href="edit-faculty.php?col='.$row[0].'">Edit</td>';
+									echo '<td><a href="delete-faculty.php?col='.$row[0].'">Delete</td></tr>';
 									$a++;
 									$count++;
 								}
@@ -98,7 +97,7 @@ $count=0;
     
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
-      <td><input type="submit" value="Guest Record" /></td>
+      <td><input type="submit" value="faculty record" /></td>
     </tr>
   </table>
   <input type="hidden" name="MM_search" value="form2" />
