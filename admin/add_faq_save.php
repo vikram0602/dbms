@@ -7,10 +7,11 @@
 		<div id="middle-column">
 	</div>
 		<?php
+		include("config.php");
   session_start();
   $username=$_SESSION['CurrentUser'];
-  $ques=$_POST["ques"];
-  $ans=$_POST["ans"];
+  $question=$_POST["ques"];
+  $answer=$_POST["ans"];
   
 	$name=$_SESSION['CurrentUserName'];
   
@@ -19,27 +20,32 @@
 				if($_SESSION['CurrentUserType']=="admin")
 			   {
   				// Create connection
-				$con=mysqli_connect("127.0.0.1","root","","school");
-				if (mysqli_connect_errno($con))
+				
+				if (!$conn)
 				{
-					echo "Failed to connect to MySQL: " . mysqli_connect_error();
+					echo "Failed to connect to : " ;
 				}
-				else if (empty($ans)||empty($ques))
+				else if (empty($answer)||empty($question))
 				header('Location:add_faq.php'); 
 				else
 				{
-				$result0 = mysqli_query($con,"INSERT into faq(sno,ques,answer)VALUES('','".$ques."','".$ans."')");
-				header('Location:add_faq.php');
+		$result = oci_parse($conn,"INSERT INTO faq VALUES(:question,:answer)");
+      oci_bind_by_name($result,":question",$question);
+      oci_bind_by_name($result,":answer",$answer);
+      oci_execute($result);
+      oci_free_statement($result);
+      oci_close($conn);				
+	  header('Location:add_faq.php');
 				}
 			}
 			   else
 				  { echo "not authorised user"; 
-				   header('Location:faq.php');
+				   header('Location:/dbms/index.php');
 					exit;
 		}
 		
 	}
-	mysqli_close($con);
+	
   ?>
  </body>
 
