@@ -1,11 +1,11 @@
-<title> TEMPERATURE ANALYSIS</title>
+<title> PRES ANALYSIS</title>
 <style type="text/css">
     .Ta
     {
         display: table;
 		
 		 font-family: "Times New Roman", Times, serif;
-		 width: 1000px;
+		 width: 100px;
 		 padding-top: 200px;
     
     padding-bottom: 200px;
@@ -95,27 +95,13 @@ $lat1=round($lat,2);
 	 
 		
 		<div class='Ce'>
-	 Temperature:<br><select id="temperature" name="temperature"   > 	
+	 Temperature:&nbsp&nbsp&nbsp&nbsp&nbsp<select id="temperature" name="temperature"   > 	
 	 				<option value="aa" selected="selected" ></option>
 	  <option value="0" >> 0</option>
-				<option value="-30" >> -30</option>
-				<option value="-20" >> -20</option>
-				<option value="-10" >> -10</option>
 				<option value="10" >> 10</option>
 				<option value="20" >> 20</option>
 				<option value="50" >> 50</option>
 				<option value="70" >> 70</option>
-				<option value="80" >> 80</option>
-				<option value="90" >> 90</option>
-				<option value="-2030" >< -30</option>
-				<option value="-2020" >< -20</option>
-				<option value="-2010" >< -10</option>
-				<option value="-1990" >< 10</option>
-				<option value="-1980" >< 20</option>
-				<option value="-1950" >< 50</option>
-				<option value="-1930" >< 70</option>
-				<option value="-1920" >< 80</option>
-				<option value="-1910" >< 90</option>
           </select>
 		  </div>
 
@@ -211,14 +197,9 @@ include_once("config.php");
 	  
 	   echo "</br>".$lng."    a   ".$lat."</br>station id=".$msid."</br>"; 
        //echo "Connected to foo";
-	   if ($tem < -1000) {
-	    	$tem += 2000;
-	    	$tem_dir = "<";
-	    } else {
-	    	$tem_dir = ">=";
-	    }
+	  
 	
-		 $b="SELECT station_id, temperature, to_char(time_stamp, 'DD-Mon-YYYY') from Climate_data where station_id='".$msid."' and temperature $tem_dir ".$tem." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
+		 $b="SELECT station_id, temperature, to_char(time_stamp, 'DD-Mon-YYYY') from Climate_data where station_id='".$msid."' and temperature >= ".$tem." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
 AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 		
 		//die($b);

@@ -1,4 +1,4 @@
-<title> TEMPERATURE ANALYSIS</title>
+<title> PRESSURE ANALYSIS</title>
 <style type="text/css">
     .Ta
     {
@@ -55,7 +55,7 @@ if (isset($_GET["lng1"]))
 if (isset($_GET["lat1"]))
 	$lat=(float)$_GET["lat1"];
 if (isset($_GET["pressure"]))
-	$tem= (float)$_GET["pressure"];
+	$pre= (float)$_GET["pressure"];
 if (isset($_GET["date1"]))
 	$mf=$_GET["date1"];
 if (isset($_GET["date2"]))
@@ -64,10 +64,11 @@ if (isset($_GET["date3"]))
 	$mt=$_GET["date3"];
 if (isset($_GET["date4"]))
 	$yt=$_GET["date4"];
+$msid=$_GET["station_id"];
 
 
-if(!isset($tem) or $tem=='aa' or $tem== NULL)
-	$tem=-20;
+if(!isset($pre) or $pre=='aa' or $pre== NULL)
+	$pre=0;
 if(!isset($mf) or $mf=='aa' or $mf== NULL)
 	$mf=01;
 if(!isset($yf) or $yf=='aa' or $yf== NULL)
@@ -76,15 +77,17 @@ if(!isset($mt) or $mt=='aa' or $mt== NULL)
 	$mt=12;
 if(!isset($yt) or $yt=='aa' or $yt== NULL)
 	$yt=2014;
+if(!isset($msid) or $msid== NULL)
+	$msid=722110;
 
 $lng1=round($lng,2);
 $lat1=round($lat,2);
-$msid="722110";
+
 //echo $lng1."          ".$lat1."         ".$hum. "      ".$wind."    ".$tem;
 ?>
 <body>
-<h1> Temperature Preview </h1>
-<form   action="tool1.php" method="get" id="form2">
+<h1> Pressure Preview </h1>
+<form   action="ashish_tool1.php" method="get" id="form2">
 	 <input type="hidden" id="lat1" name="lat1" value="<?php echo $lat ?>"  >
 	 <input type="hidden" id="lng1" name="lng1" value="<?php echo $lng ?>" > 
 	 <div class='Ta'>
@@ -92,13 +95,19 @@ $msid="722110";
 	 
 		
 		<div class='Ce'>
-	 Pressure:<select id="pressure" name="pressure"   > 	
+	 Pressure:<br><select id="pressure" name="pressure"   > 	
 	 				<option value="aa" selected="selected" ></option>
 	  <option value="0" >> 0</option>
-				<option value="800" >> 800</option>
+				<option value="980" >> 980</option>
+				<option value="990" >> 990</option>
 				<option value="1000" >> 1000</option>
-				<option value="1200" >> 1200</option>
-				<option value="1400" >> 1400</option>
+				<option value="1010" >> 1010</option>
+				<option value="1020" >> 1020</option>
+				<option value="-980" >< 980</option>
+				<option value="-990" >< 990</option>
+				<option value="-1000" >< 1000</option>
+				<option value="-1010" >< 1010</option>
+				<option value="-1020" >< 1020</option>
           </select>
 		  </div>
 
@@ -190,36 +199,18 @@ $msid="722110";
 <?php
 include_once("config.php");
 
-   if ($conn)
-   {
-	   $b="SELECT * from station_table";
-	   $stid = oci_parse($conn,$b);
-	   oci_execute($stid);
-	   $minsum=100;
-	   while (($row = oci_fetch_array($stid, OCI_BOTH)) != false) {
-			$sid=$row[0];
-			$t_lat=round($row[1],2);
-			$t_lng=round($row[2],2);
-			$mlat=abs($lat1- $t_lat);
-			$mlng=abs($lng1- $t_lng);
-			
-			$sum=$mlat+$mlng;
-			if($sum<$minsum)
-			{
-				$msid=$sid;
-				$minsum=$sum;
-				$lng=$t_lng;
-				$lat =$t_lat;
-					   
-
-			}
-	   }
-	   oci_free_statement($stid);
+   
+	  
 	   echo "</br>".$lng."    a   ".$lat."</br>station id=".$msid."</br>"; 
        //echo "Connected to foo";
-	  
+	  if ($pre < 0) {
+	    	$pre = -$pre;
+	    	$pre_dir = "<";
+	    } else {
+	    	$pre_dir = ">=";
+	    }
 	
-		 $b="SELECT * from Climate_data where station_id='".$msid."and pressure >= ".$tem."and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
+		 $b="SELECT station_id, pressure, to_char(time_stamp, 'DD-Mon-YYYY') from Climate_data where station_id='".$msid."' and pressure $pre_dir ".$pre." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
 AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 		
 		//die($b);
@@ -231,7 +222,7 @@ AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 								<div class="Ce">Station id</div>
 								
 								
-								<div class="Ce">Temperature</div>
+								<div class="Ce">Pressure</div>
 								<div class="Ce">Date</div>
  								 </div>';
 								 $flag=false;
@@ -240,11 +231,9 @@ AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
     								<div class="Ce">'.$row[0].'</div>
   								
 									  <div class="Ce">'.round($row[1],2).'</div>
-									   <div class="Ce">'.round($row[2],2).'</div>
-									    <div class="Ce">'.round($row[3],5).'</div>
-										 <div class="Ce">'.round($row[4],2).'</div>
-										  <div class="Ce">'.round($row[5],2).'</div>
-										   <div class="Ce">'.$row[6].'</div>
+									   <div class="Ce">'.$row[2].'</div>
+									    
+										 
  								 </div>';
 								$flag=true;
 					
@@ -260,11 +249,6 @@ AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 			}
 	   oci_free_statement($stid);  
        oci_close($conn);
-   
-   }
-   else
-   {
-       die("could not connect to foo");
-   }
+
 include("footer.html");
 ?>

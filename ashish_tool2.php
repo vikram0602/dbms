@@ -1,4 +1,4 @@
-<title> TEMPERATURE ANALYSIS</title>
+<title> HUMIDITY ANALYSIS</title>
 <style type="text/css">
     .Ta
     {
@@ -54,8 +54,8 @@ if (isset($_GET["lng1"]))
 	$lng=(float)$_GET["lng1"];
 if (isset($_GET["lat1"]))
 	$lat=(float)$_GET["lat1"];
-if (isset($_GET["temperature"]))
-	$tem= (float)$_GET["temperature"];
+if (isset($_GET["humidity"]))
+	$hum= (float)$_GET["humidity"];
 if (isset($_GET["date1"]))
 	$mf=$_GET["date1"];
 if (isset($_GET["date2"]))
@@ -67,8 +67,8 @@ if (isset($_GET["date4"]))
 $msid=$_GET["station_id"];
 
 
-if(!isset($tem) or $tem=='aa' or $tem== NULL)
-	$tem=-20;
+if(!isset($hum) or $hum=='aa' or $hum== NULL)
+	$hum=0;
 if(!isset($mf) or $mf=='aa' or $mf== NULL)
 	$mf=01;
 if(!isset($yf) or $yf=='aa' or $yf== NULL)
@@ -86,8 +86,8 @@ $lat1=round($lat,2);
 //echo $lng1."          ".$lat1."         ".$hum. "      ".$wind."    ".$tem;
 ?>
 <body>
-<h1> Temperature Preview </h1>
-<form   action="ashish_tool.php" method="get" id="form2">
+<h1> Humidity Preview </h1>
+<form   action="ashish_tool2.php" method="get" id="form2">
 	 <input type="hidden" id="lat1" name="lat1" value="<?php echo $lat ?>"  >
 	 <input type="hidden" id="lng1" name="lng1" value="<?php echo $lng ?>" > 
 	 <div class='Ta'>
@@ -95,27 +95,25 @@ $lat1=round($lat,2);
 	 
 		
 		<div class='Ce'>
-	 Temperature:<br><select id="temperature" name="temperature"   > 	
+	 Humidity:<br><select id="humidity" name="humidity"   > 	
 	 				<option value="aa" selected="selected" ></option>
-	  <option value="0" >> 0</option>
-				<option value="-30" >> -30</option>
-				<option value="-20" >> -20</option>
-				<option value="-10" >> -10</option>
+	  
+				
+				<option value="0" >> 0</option>
 				<option value="10" >> 10</option>
 				<option value="20" >> 20</option>
-				<option value="50" >> 50</option>
-				<option value="70" >> 70</option>
-				<option value="80" >> 80</option>
-				<option value="90" >> 90</option>
-				<option value="-2030" >< -30</option>
-				<option value="-2020" >< -20</option>
-				<option value="-2010" >< -10</option>
-				<option value="-1990" >< 10</option>
-				<option value="-1980" >< 20</option>
-				<option value="-1950" >< 50</option>
-				<option value="-1930" >< 70</option>
-				<option value="-1920" >< 80</option>
-				<option value="-1910" >< 90</option>
+				<option value="30" >> 30</option>
+				<option value="50"  >> 50</option>
+				<option value="60"  >> 60</option>
+				<option value="70"  >> 70</option>
+				<option value="80"  >> 80</option>
+				<option value="-10" >< 10</option>
+				<option value="-20" >< 20</option>
+				<option value="-30" >< 30</option>
+				<option value="-50"  >< 50</option>
+				<option value="-60"  >< 60</option>
+				<option value="-70"  >< 70</option>
+				<option value="-80"  >< 80</option>
           </select>
 		  </div>
 
@@ -211,14 +209,14 @@ include_once("config.php");
 	  
 	   echo "</br>".$lng."    a   ".$lat."</br>station id=".$msid."</br>"; 
        //echo "Connected to foo";
-	   if ($tem < -1000) {
-	    	$tem += 2000;
-	    	$tem_dir = "<";
+	  if ($hum < 0) {
+	    	$humidity_dir = "<";
+	    	$hum = -$hum;
 	    } else {
-	    	$tem_dir = ">=";
+	    	$humidity_dir = ">=";
 	    }
 	
-		 $b="SELECT station_id, temperature, to_char(time_stamp, 'DD-Mon-YYYY') from Climate_data where station_id='".$msid."' and temperature $tem_dir ".$tem." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
+		 $b="SELECT station_id, humidity, to_char(time_stamp, 'DD-Mon-YYYY') from Climate_data where station_id='".$msid."' and humidity $humidity_dir ".$hum." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
 AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 		
 		//die($b);
@@ -230,7 +228,7 @@ AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 								<div class="Ce">Station id</div>
 								
 								
-								<div class="Ce">Temperature</div>
+								<div class="Ce">Pressure</div>
 								<div class="Ce">Date</div>
  								 </div>';
 								 $flag=false;
