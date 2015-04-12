@@ -64,7 +64,7 @@ if (isset($_GET["date3"]))
 	$mt=$_GET["date3"];
 if (isset($_GET["date4"]))
 	$yt=$_GET["date4"];
-$msid=$_GET["station_id"];
+$msid=(string)$_GET["station_id"];
 
 
 if(!isset($rf) or $rf=='aa' or $rf== NULL)
@@ -79,6 +79,13 @@ if(!isset($yt) or $yt=='aa' or $yt== NULL)
 	$yt=2014;
 if(!isset($msid) or $msid== NULL)
 	$msid=722110;
+
+//Cast to correct types to resist SQL injection attacks
+$mf = (int)$mf;
+$yf = (int)$yf;
+$mt = (int)$mt;
+$yt = (int)$yt;
+$rf = (int)$rf;
 
 $lng1=round($lng,2);
 $lat1=round($lat,2);
@@ -203,7 +210,7 @@ include_once("config.php");
 
    
 	  
-	   echo "</br>".$lng."    a   ".$lat."</br>station id=".$msid."</br>"; 
+	   echo "<br>station id=".$msid."<br>"; 
        //echo "Connected to foo";
 	  if ($rf < 0) {
 	    	$rf = -$rf;
@@ -213,12 +220,13 @@ include_once("config.php");
 	    }
 
 	
-		 $b="SELECT station_id, rainfall, to_char(time_stamp, 'DD-Mon-YYYY') from Climate_data where station_id='".$msid."' and rainfall $rf_dir ".$rf." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
+		 $b="SELECT station_id, rainfall, to_char(time_stamp, 'DD-Mon-YYYY') from Climate_data where station_id=:msid and rainfall $rf_dir ".$rf." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
 AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 		
 		//die($b);
 		// echo $b;
 	   $stid = oci_parse($conn,$b);
+	   oci_bind_by_name($stid,":msid", $msid);
 	   oci_execute($stid);
 	   echo '<div class="Ta">';
 						echo '<div class="Heading">
