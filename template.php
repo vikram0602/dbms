@@ -80,9 +80,9 @@
 						<div id="sidebar" class="4u" style="background-color:#003300">
 							<section>
 								<header class="major">
-									<h2>Template for Pages</h2>
+									<h2>Important Links</h2>
 								</header>									
-								<ul class="default" >
+								<ul class="list-group" >
 									<li class="active"><a href="index.php">Home</a></li>
 									<li>
 										<a href="index.php#about">About Us</a>
