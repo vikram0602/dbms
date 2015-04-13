@@ -8,9 +8,9 @@
 if(isset($_SESSION['CurrentUser']))
 {
 	if($_SESSION['CurrentUserType']=="admin")
-		 header("Location: admin/adminaccount.php");
+		 header("Location: ../admin/adminaccount.php");
 	 if($_SESSION['CurrentUserType']=="guest")
-		 header("Location: guest/guestaccount.php");
+		 header("Location: ../guest/guestaccount.php");
 
 }	
 
@@ -47,13 +47,13 @@ else
 				 echo $_SESSION['CurrentUserType'];
 				if($_SESSION['CurrentUserType']=="guest")
 				{
-					header('Location:/dbms/guest/guestaccount.php');
+					header('Location:../guest/guestaccount.php');
 					exit;
 				}
 				
 				else if($_SESSION['CurrentUserType']=="admin")
 				{
-					header('Location:/dbms/admin/adminaccount.php');
+					header('Location:../admin/adminaccount.php');
 					exit;
 				}
 			}

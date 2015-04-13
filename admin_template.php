@@ -67,12 +67,11 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 								<ul class="default" >
 									<li class="active"><a href="index.php">Home</a></li>
 									<li>
-										<a href="index.php#about">About Us</a>
+										<a href="../index.php#about">About Us</a>
 									</li>
-									<li><a href="faq.php">FAQs</a></li>
-									<li><a href="index.php#login">Login</a></li>
+									<li><a href="add_faq.php">FAQs</a></li>
+									<li><a href="../index.php">Go To Search</a></li>
 									<li><a href="contact.php">contact us</a></li>
-									<li><a href="terms.php">Terms of Use</a></li>
 								</ul>
 							</section>
 							<section>

@@ -44,9 +44,10 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 									<li>
 										<a href="cpage.php">Create Page</a>
 									</li>
-									<li><a href="add_faq.php">FAQs</a></li>
+									<li><a href="post.php">Announcement</a></li>
 									<li><a href="edit.php">Edit Profile</a></li>
 									<li><a href="/dbms/login/logout.php">Logout</a></li>
+									
 								</ul>
 							</nav>
 							</div>
@@ -68,11 +69,11 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 									<li class="active"><a href="adminaccount.php">Home</a></li>
 									<li>
 										<a href="search.php">Search User</a>
-									</li>
-									<li><a href="faq.php">FAQs</a></li>
-									<li><a href="index.php#login">Login</a></li>
+										</li>
+									<li><a href="add_faq.php">FAQs</a></li>
+									<li><a href="../index.php">Go To Search</a></li>
 									<li><a href="contact.php">contact us</a></li>
-									<li><a href="terms.php">Terms of Use</a></li>
+									<li><a href="cUser.php">create user</a></li>
 								</ul>
 							</section>
 							<section>
