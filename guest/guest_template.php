@@ -42,7 +42,7 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="guest")
 								<ul>
 									<li class="active"><a href="guestaccount.php">Home</a></li>
 									
-									<li><a href="add_faq.php">FAQs</a></li>
+									<li><a href="post.php">Announcement</a></li>
 									<li><a href="edit.php">Edit Profile</a></li>
 									<li><a href="/dbms/login/logout.php">Logout</a></li>
 								</ul>
@@ -63,12 +63,12 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="guest")
 									<h2><?php echo $_SESSION['CurrentUserName']  ?></h2>
 								</header>									
 								<ul class="default" >
-									<li class="active"><a href="guestaccount.php">Home</a></li>
 									
-									<li><a href="faq.php">FAQs</a></li>
-									<li><a href="index.php#login">Login</a></li>
-									<li><a href="contact.php">contact us</a></li>
-									<li><a href="terms.php">Terms of Use</a></li>
+									<li class="active"><a href="guestaccount.php">Home</a></li>
+									<li><a href="add_faq.php">Announcement</a></li>
+									<li><a href="edit.php">Edit Profile</a></li>
+									<li><a href="../contact.php">contact us</a></li>
+									<li><a href="../index.php">Search</a></li>
 								</ul>
 							</section>
 							<section>

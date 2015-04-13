@@ -63,8 +63,8 @@ else
 		}
 		else
 		{
-			//header('Location:login-unsuccessfull.php');
-			//exit;
+			header('Location:login-unsuccessfull.php');
+			exit;
 		}
 		oci_free_statement($result0);
 		

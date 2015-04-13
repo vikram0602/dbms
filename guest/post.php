@@ -1,11 +1,12 @@
 <?php
-include("admin_template.php");
+include("guest_template.php");
 include("config.php");
 ?>
 <div  align="center">
     	  <form name="form1" method="post" action="postSave.php">
     <h1 class="style2" > AddPost</h1>
-   <textarea class="ckeditor" cols="10" id="editor1" name="editor1" rows="5" placeholder="Whats on Your mind!"  ></textarea>
+    <p>
+	<textarea class="ckeditor" cols="10" id="editor1" name="editor1" rows="5" placeholder="Whats on Your mind!"  ></textarea>
       <input type="submit" name="Submit" value="POST" onfocus="red" />
     </p>
     <p>&nbsp;</p>
@@ -17,7 +18,7 @@ $username=$_SESSION['CurrentUser'];
   
 
 if($conn){
-$b="SELECT * FROM announcement where id in(select user_name from login where user_type ='admin') ORDER BY TIME_STAMP DESC";//writing a query we want to execute, store in a variable for convenience!
+$b="SELECT * FROM announcement  ORDER BY TIME_STAMP DESC";//writing a query we want to execute, store in a variable for convenience!
 	   
 	   $stid = oci_parse($conn,$b);//parsing your query
 	   oci_execute($stid);// execute that parsed query
