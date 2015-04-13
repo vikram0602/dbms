@@ -368,7 +368,7 @@ include_once("config.php");
 	    }
 
 
-		 $b="SELECT * from Climate_data where station_id='".$msid."' and humidity $humidity_dir ".$hum." and wind_speed $wind_dir ".$wind.
+		 $b="SELECT * from Climate_data inner join station_table on Climate_data.station_id=station_table.station_id where Climate_data.station_id='".$msid."' and humidity $humidity_dir ".$hum." and wind_speed $wind_dir ".$wind.
 		 " and temperature $tem_dir ".$tem." and pressure $pre_dir ".$pre." and rainfall >= ".$rf." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
 AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 		
