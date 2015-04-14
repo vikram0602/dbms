@@ -46,7 +46,7 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 									</li>
 									<li><a href="post.php">Announcement</a></li>
 									<li><a href="edit.php">Edit Profile</a></li>
-									<li><a href="/dbms/login/logout.php">Logout</a></li>
+									<li><a href="../login/logout.php">Logout</a></li>
 									
 								</ul>
 							</nav>
