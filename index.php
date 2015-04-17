@@ -69,9 +69,9 @@
 								if(isset($_SESSION['CurrentUser']))
 										{
 											if($_SESSION['CurrentUserType']=="admin")
-												echo '<li><a href="/dbms/admin/adminaccount.php"> welcome:  '.$_SESSION["CurrentUserName"].'</a></li>';	//header("location:/dbms/admin/adminaccount.php");
+												echo '<li><a href="admin/adminaccount.php"> welcome:  '.$_SESSION["CurrentUserName"].'</a></li>';	//header("location:/dbms/admin/adminaccount.php");
 											if($_SESSION['CurrentUserType']=="guest")
-												echo '<li><a href="/dbms/guest/guestaccount.php">welcome:  '.$_SESSION["CurrentUserName"].'</a></li>';
+												echo '<li><a href="guestaccount.php">welcome:  '.$_SESSION["CurrentUserName"].'</a></li>';
 											}	
 								?>
 								</ul>
