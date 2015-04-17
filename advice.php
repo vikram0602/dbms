@@ -15,7 +15,6 @@ $hv = round($row[1],4);
 $rv = round($row[2],4)*100;
 	echo "<h4>Automated Climatic Analyizer Output</h4>";
 	$b = "select s from advice where $tv <= th and $tv >= tl and $rv <= rh and $rv >= rl and $hv <= hh and $hv >= hl";
-	//die($b);
 	$stid = oci_parse($conn,$b);
 	oci_execute($stid);
     $was_advice = false;
