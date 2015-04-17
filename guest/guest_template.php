@@ -65,7 +65,7 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="guest")
 								<ul class="default" >
 									
 									<li class="active"><a href="guestaccount.php">Home</a></li>
-									<li><a href="add_faq.php">Announcement</a></li>
+									<li><a href="post.php">Announcement</a></li>
 									<li><a href="edit.php">Edit Profile</a></li>
 									<li><a href="../contact.php">contact us</a></li>
 									<li><a href="../index.php">Search</a></li>
