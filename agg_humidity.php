@@ -177,6 +177,10 @@ if (!$conn) {
   echo "<img src=\"jpgraph/graph_humidity.php?station_id=$station_id&year_from=$yf&year_to=$yt&month_from=$mf&month_to=$mt\">";
 } 
 
+
+//Advice
+include('advice.php');
+
 //Free unused resources
 oci_close($conn);
 ?>
