@@ -15,7 +15,7 @@ oci_execute($temp_agg_s);
 $temp_dates = array();
 $temp_temps = array();
 while (($row = oci_fetch_array($temp_agg_s,OCI_BOTH)) != false) {
-  array_push($temp_temps,$row[0]);
+  array_push($temp_temps,round($row[0]*100,2));
   array_push($temp_dates,(int)$row[1] - 1);
 }
 
@@ -34,7 +34,7 @@ $graph->xgrid->SetLineStyle("solid");
 $graph->xgrid->SetColor('#E3E3E3');
 $graph->xaxis->scale->ticks->Set(1);
 $graph->xaxis->title->Set("Monthly Index                                                                         ");
-$graph->yaxis->title->Set("Hourly Rainfall Rate (in)");
+$graph->yaxis->title->Set("Hourly Rainfall Rate (in*100)");
 
 $p1 = new LinePlot($temp_temps,$temp_dates);
 $graph->Add($p1);
