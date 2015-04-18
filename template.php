@@ -52,7 +52,7 @@
 									  }
 									 ?>
 									<li><a href="contact.php">contact us</a></li>
-									<li><a href="terms.php">Terms of Use</a></li>
+									<li><a href="stats.php">Statistics</a></li>
 									<?php
 									//echo $_SESSION["CurrentUserName"];
 								//echo '<li><a href="/dbms/admin/adminaccount.php"> hasdhjasdh</a></li>';	//header("location:/dbms/admin/adminaccount.php");
