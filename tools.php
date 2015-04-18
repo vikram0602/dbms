@@ -65,4 +65,9 @@
 <input type="submit" style="width:500px" value="Wind Prediction Tool">
 </form>
 
+<h1> Other </h1>
+<form action="stats.php" method="get">
+<input type="submit" style="width:500px" value="Product Statistics">
+</form>
+
 <?php include("footer.html"); ?>
