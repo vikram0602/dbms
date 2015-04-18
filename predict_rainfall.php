@@ -91,7 +91,7 @@ echo $station_id;
 ?>
 .
 
-<form   action="predict_temperature.php" method="get" id="form2">
+<form   action="predict_rainfall.php" method="get" id="form2">
 	 <div class='Ta'>
 	 <div class='Ro'>
 	 <div class='Ce'>
@@ -214,7 +214,7 @@ if (!$conn) {
 } else {
 
   //Print results to the page
-  echo "<img src=\"jpgraph/graph_temperature_jan.php?station_id=$station_id&year_from=$yf&year_to=$yt&month_from=$mf&month_to=$mt&ms=$ms&predict_years=$predict_years\">";
+  echo "<img src=\"jpgraph/graph_rainfall_jan.php?station_id=$station_id&year_from=$yf&year_to=$yt&month_from=$mf&month_to=$mt&ms=$ms&predict_years=$predict_years\">";
 } 
 
 

@@ -48,4 +48,21 @@
 
 <h1> Climate Prediction </h1>
 
+<form action="predict_temperature.php" method="get">
+<input type="hidden" name="station_id" value="<?php echo $_GET["station_id"]; ?>">
+<input type="submit" style="width:500px" value="Temperature Prediction Tool">
+</form>
+<form action="predict_humidity.php" method="get">
+<input type="hidden" name="station_id" value="<?php echo $_GET["station_id"]; ?>">
+<input type="submit" style="width:500px" value="Humidity Prediction Tool">
+</form>
+<form action="predict_rainfall.php" method="get">
+<input type="hidden" name="station_id" value="<?php echo $_GET["station_id"]; ?>">
+<input type="submit" style="width:500px" value="Rainfall Prediction Tool">
+</form>
+<form action="predict_wind.php" method="get">
+<input type="hidden" name="station_id" value="<?php echo $_GET["station_id"]; ?>">
+<input type="submit" style="width:500px" value="Wind Prediction Tool">
+</form>
+
 <?php include("footer.html"); ?>

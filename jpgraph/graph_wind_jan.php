@@ -43,7 +43,7 @@ if (strlen((string)$ms)==1) {
 }
 
 //DB
-$temp_agg_b="SELECT avg(temperature) as tmp,to_char(time_stamp,'YYYY') as dte from climate_data where to_char(time_stamp,'MM')='$ms' and station_id=:station_id and time_stamp between TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd') AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd') group by TO_CHAR(time_stamp,'YYYY') order by dte asc";
+$temp_agg_b="SELECT avg(wind_speed) as tmp,to_char(time_stamp,'YYYY') as dte from climate_data where to_char(time_stamp,'MM')='$ms' and station_id=:station_id and time_stamp between TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd') AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd') group by TO_CHAR(time_stamp,'YYYY') order by dte asc";
 $temp_agg_s = oci_parse($conn,$temp_agg_b);
 oci_bind_by_name($temp_agg_s,":station_id",$station_id);
 oci_execute($temp_agg_s);
@@ -81,7 +81,7 @@ $graph = new Graph(600,600);
 $graph->SetScale("textlin");
 $theme_class=new UniversalTheme;
 $graph->SetTheme($theme_class);
-$graph->title->Set("Temperature Prediction For The Selected Month ($ms)");
+$graph->title->Set("Wind Speed Prediction For The Selected Month ($ms)");
 $graph->SetBox(true);
 
 $graph->yaxis->HideZeroLabel();
@@ -93,14 +93,14 @@ $graph->xgrid->SetColor('#E3E3E3');
 $graph->xaxis->scale->ticks->Set(1);
 $graph->xaxis->SetTickLabels($temp_dates);
 $graph->xaxis->title->Set("Monthly Index                                                                         ");
-$graph->yaxis->title->Set("            (F°)");
 
 $p1 = new LinePlot($temp_temps);
 $graph->Add($p1);
-$p1->SetFillGradient('yellow','red');
+$p1->SetFillGradient('lightgreen','white');
 $p1->SetStepStyle();
 $p1->SetColor("#6495ED");
-$p1->SetLegend('Average Monthly Temperature');
+$p1->SetLegend('Predicted Wind Speed');
+$graph->legend->SetFrameWeight(1);;
 $graph->legend->SetFrameWeight(1);
 
 /*var_dump($temp_temps);
