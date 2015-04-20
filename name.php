@@ -43,7 +43,7 @@ $p=htmlentities($row[1], ENT_COMPAT, 'utf-8');
 		}
 	else
 	{
-	$c="../admin/custom/".htmlentities($row[3], ENT_COMPAT, 'utf-8');
+	$c="admin/custom/".htmlentities($row[3], ENT_COMPAT, 'utf-8');
 	
 	include($c);
 	}

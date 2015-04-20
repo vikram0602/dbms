@@ -5,10 +5,10 @@ include("config.php");
 <?php
 $a=$_GET['col'];
 if ((isset($_GET['col'])) && ($_GET['col'] != "")) {
-  $b = "DELETE FROM admin WHERE user_name=".$a.;
+			$b = "DELETE FROM admin WHERE user_name='".$a."'";
 					   $stid = oci_parse($conn,$b);//parsing your query
 						oci_execute($stid);
-					   $c = "DELETE FROM login WHERE user_name=".$a.;
+					   $c = "DELETE FROM login WHERE user_name='".$a."'";
 						$stid1 = oci_parse($conn,$c);//parsing your query
 						oci_execute($stid1);
 				

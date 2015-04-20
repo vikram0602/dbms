@@ -68,7 +68,7 @@ include_once("admin_template.php");
 		{
 		var id=document.forms[x][z].value;
 			var regexp = /[a-z]/gi;
-			alert(id);
+			//alert(id);
 			
 			if(id == "" || id == null)
 			{
