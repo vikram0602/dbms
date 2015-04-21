@@ -50,7 +50,10 @@
 
 <?php
 include("noside.php");
-
+if (!isset($_SESSION["CurrentUserType"])) {
+  header("Location:index.php#login");
+  die();
+}
 include("config.php");
 if ($conn)
    {

@@ -65,13 +65,13 @@ if (isset($_GET["pressure"]))
 if (isset($_GET["rainfall"]))
 	$rf=(float)$_GET["rainfall"];
 if (isset($_GET["date1"]))
-	$mf=$_GET["date1"];
+	$mf=(string)$_GET["date1"];
 if (isset($_GET["date2"]))
-	$yf=$_GET["date2"];
+	$yf=(string)$_GET["date2"];
 if (isset($_GET["date3"]))
-	$mt=$_GET["date3"];
+	$mt=(string)$_GET["date3"];
 if (isset($_GET["date4"]))
-	$yt=$_GET["date4"];
+	$yt=(string)$_GET["date4"];
 
 if(!isset($hum) or $hum=='aa' or $hum==NULL)
 	$hum=0;
@@ -367,14 +367,23 @@ include_once("config.php");
 	    	$rf_dir = ">=";
 	    }
 
+	   $yf=(int)$yf;
+	   $mf=(int)$mf;
+	   $yt=(int)$yt;
+	   $mt=(int)$mt;
 
-		 $b="SELECT * from Climate_data inner join station_table on Climate_data.station_id=station_table.station_id where Climate_data.station_id='".$msid."' and humidity $humidity_dir ".$hum." and wind_speed $wind_dir ".$wind.
-		 " and temperature $tem_dir ".$tem." and pressure $pre_dir ".$pre." and rainfall >= ".$rf." and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
+		 $b="SELECT * from Climate_data inner join station_table on Climate_data.station_id=station_table.station_id where Climate_data.station_id=:msid and humidity $humidity_dir :hum and wind_speed $wind_dir :wind and temperature $tem_dir :tem and pressure $pre_dir :pre and rainfall $rf_dir :rf and time_stamp BETWEEN TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd')
 AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd')";
 		
 		//die($b);
 		// echo $b;
 	   $stid = oci_parse($conn,$b);
+	   oci_bind_by_name($stid,":tem",$tem);
+	   oci_bind_by_name($stid,":pre",$pre);
+	   oci_bind_by_name($stid,":rf",$rf);
+	   oci_bind_by_name($stid,":hum",$hum);
+	   oci_bind_by_name($stid,":wind",$wind);
+	   oci_bind_by_name($stid,":msid",$msid);
 	   oci_execute($stid);
 	   echo '<div class="Ta">';
 						echo '<div class="Heading">

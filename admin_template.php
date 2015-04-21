@@ -2,8 +2,10 @@
  include_once("config.php");
   session_start();
   
-if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
+if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin") {
 	 header("location: login/logout.php");
+	 die();
+}
  ?>
 <!DOCTYPE HTML>
 

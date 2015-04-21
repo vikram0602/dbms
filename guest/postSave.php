@@ -3,9 +3,10 @@
 		session_start();
   if(isset($_SESSION['CurrentUser']))
 {
-	if($_SESSION['CurrentUserType']!="admin")
+	if($_SESSION['CurrentUserType']!="guest" and $_SESSION['CurrentUserType']!="admin") {
 		 header("Location:../index.php");
-	 
+		 die();
+	}
 
 }	
   $username=$_SESSION['CurrentUser'];

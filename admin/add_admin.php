@@ -1,7 +1,6 @@
 <?php
 include_once("admin_template.php");
  include("config.php");
- 
  $username=$_POST['Username'];
  if($username==NULL)
 			header("Location: adminaccount.php");

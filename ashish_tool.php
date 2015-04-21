@@ -50,10 +50,12 @@
 <?php
 
 include("noside.php");
-if (isset($_GET["lng1"]))
-	$lng=(float)$_GET["lng1"];
-if (isset($_GET["lat1"]))
-	$lat=(float)$_GET["lat1"];
+
+if (!isset($_SESSION["CurrentUserType"])) {
+  header("Location:index.php");
+  die();
+}
+
 if (isset($_GET["temperature"]))
 	$tem= (float)$_GET["temperature"];
 if (isset($_GET["date1"]))
@@ -87,19 +89,13 @@ $mt = (int)$mt;
 $yt = (int)$yt;
 $tem = (int)$tem;
 
-$lng1=round($lng,2);
-$lat1=round($lat,2);
-
-//echo $lng1."          ".$lat1."         ".$hum. "      ".$wind."    ".$tem;
 ?>
 <body>
 <h1> Temperature Preview </h1>
 <form   action="ashish_tool.php" method="get" id="form2">
-	 <input type="hidden" id="lat1" name="lat1" value="<?php echo $lat ?>"  >
-	 <input type="hidden" id="lng1" name="lng1" value="<?php echo $lng ?>" > 
 	 <div class='Ta'>
 	 <div class='Ro'>
-	 
+	 <input type="hidden" name="station_id" value="<?php echo $msid; ?>">
 		
 		<div class='Ce'>
 	 Temperature:<br><select id="temperature" name="temperature"   > 	

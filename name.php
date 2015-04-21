@@ -13,9 +13,10 @@ if(!$conn)
 }
 else
 {
-$b = "SELECT * from newpage where title='".$title."'";
+$b = "SELECT * from newpage where title=:title";
 //echo $b;
  $stid = oci_parse($conn,$b);//parsing your query
+ oci_bind_by_name($stid,":title",$title);
 	   oci_execute($stid);// execute that parsed query
 	   $row = oci_fetch_array($stid, OCI_BOTH)
 //$row = oci_fetch_assoc($stid);

@@ -169,21 +169,21 @@ document.getElementById("guest").style.display = "none";
 <form action="add_admin.php" method="post" name="form1" id="form1" onsubmit='return validate1("form1","error","uname")'  >
   <table >
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Username:</td>
+      <td nowrap="nowrap" align="right">Username:&nbsp</td>
       <td><input type="text" id="uname" name="Username" value="" size="32" style="display:hidden;"  /></td>
 	  
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Name:</td>
+      <td nowrap="nowrap" align="right">Name:&nbsp</td>
       <td><input type="text" name="Firstname" id="firstname" value="" size="32" /></td>
     </tr>
 
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Emailid:</td>
+      <td nowrap="nowrap" align="right">Emailid:&nbsp</td>
       <td><input type="text" name="emailid" id="emailid" value="" size="32" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Contact:</td>
+      <td nowrap="nowrap" align="right">Contact:&nbsp</td>
       <td><input type="text" name="Contact" id="contact" value="" size="32" /></td>
     </tr>
    
@@ -202,20 +202,20 @@ document.getElementById("guest").style.display = "none";
 <form action="add_guest.php" method="post" name="form2" id="form2" onsubmit='return validate2("form2","error2","uname1")' >
   <table>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Username:</td>
+      <td nowrap="nowrap" align="right">Username:&nbsp</td>
       <td><input type="text" id="uname1" name="username" value="" size="32"   /></td>
 	 
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Name:</td>
+      <td nowrap="nowrap" align="right">Name:&nbsp</td>
       <td><input type="text" name="Firstname" id="firstname1" value="" size="32" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Email_id:</td>
+      <td nowrap="nowrap" align="right">Email_id:&nbsp</td>
       <td><input type="text" name="email_id" id="emailid1" value="" size="32" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Contact_no:</td>
+      <td nowrap="nowrap" align="right">Contact_no:&nbsp</td>
       <td><input type="text" name="contact_no" id="contact1" value="" size="32" /></td>
     </tr>
     <tr><td><p id="error2" style="color:red; font-size:9px;"></p></td></tr>
