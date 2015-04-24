@@ -6,13 +6,13 @@ require_once('jpgraph_line.php');
 
 //Parameters
 if (isset($_GET["month_from"]))
-	$mf=$_GET["month_from"];
+	$mf=(int)$_GET["month_from"];
 if (isset($_GET["year_from"]))
-	$yf=$_GET["year_from"];
+	$yf=(int)$_GET["year_from"];
 if (isset($_GET["month_to"]))
-	$mt=$_GET["month_to"];
+	$mt=(int)$_GET["month_to"];
 if (isset($_GET["year_to"]))
-	$yt=$_GET["year_to"];
+	$yt=(int)$_GET["year_to"];
 if(!isset($mf) or $mf=='aa' or $mf== NULL)
 	$mf=01;
 if(!isset($yf) or $yf=='aa' or $yf== NULL)
@@ -33,9 +33,12 @@ oci_execute($temp_agg_s);
 $temp_dates = array();
 $temp_temps = array();
 while (($row = oci_fetch_array($temp_agg_s,OCI_BOTH)) != false) {
-  array_push($temp_temps,$row[0]);
+  array_push($temp_temps,round($row[0],2));
   array_push($temp_dates,(int)$row[1] - 1);
 }
+
+//var_dump($temp_temps);
+//die();
 
 $graph = new Graph(600,600);
 $graph->SetScale("textlin");
@@ -54,7 +57,7 @@ $graph->xaxis->scale->ticks->Set(1);
 $graph->xaxis->title->Set("Monthly Index                                                                         ");
 $graph->yaxis->title->Set("Dew Point (F°)");
 
-$p1 = new LinePlot($temp_temps,$temp_dates);
+$p1 = new LinePlot($temp_temps);
 $graph->Add($p1);
 $p1->SetFillGradient('blue','white');
 $p1->SetStepStyle();

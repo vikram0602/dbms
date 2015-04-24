@@ -71,7 +71,7 @@
 											if($_SESSION['CurrentUserType']=="admin")
 												echo '<li><a href="admin/adminaccount.php"> welcome:  '.$_SESSION["CurrentUserName"].'</a></li>';	//header("location:/dbms/admin/adminaccount.php");
 											if($_SESSION['CurrentUserType']=="guest")
-												echo '<li><a href="guestaccount.php">welcome:  '.$_SESSION["CurrentUserName"].'</a></li>';
+												echo '<li><a href="guest/guestaccount.php">welcome:  '.$_SESSION["CurrentUserName"].'</a></li>';
 											}	
 								?>
 								</ul>
@@ -146,11 +146,11 @@
 					
 				<button type="submit" class="btn btn-default">Sign In</button>
 				
-				<button type="button" class="btn btn-default">
-				<a href="login/forget.php" title="Login" rel="home" >Forget Password</a>
+				<button type="submit" class="btn btn-default">
+				<a href="forget.php" title="Login">Forget Password</a>
 				</button>
-				<button type="button" class="btn btn-default">
-				<a href="login/signup.php" title="signup" rel="home" >Not A Member Yet?</a>
+				<button type="submit" class="btn btn-default">
+				<a href="signup.php" title="signup">Not A Member Yet?</a>
 				</button>
 			
 			</div>	

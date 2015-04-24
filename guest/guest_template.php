@@ -2,8 +2,10 @@
  include_once("config.php");
   session_start();
   
-if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="guest")
-	 header("location:/dbms/login/logout.php");
+if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="guest") {
+	 header("location:../login/logout.php");
+	 die();
+}
  ?>
 <!DOCTYPE HTML>
 
@@ -67,7 +69,7 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="guest")
 									<li class="active"><a href="guestaccount.php">Home</a></li>
 									<li><a href="post.php">Announcement</a></li>
 									<li><a href="edit.php">Edit Profile</a></li>
-									<li><a href="../contact.php">contact us</a></li>
+									<li><a href="../contact.php">Contact Us</a></li>
 									<li><a href="../index.php">Search</a></li>
 								</ul>
 							</section>

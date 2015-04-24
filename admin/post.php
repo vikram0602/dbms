@@ -6,7 +6,7 @@ include("config.php");
     	  <form name="form1" method="post" action="postSave.php">
     <h1 class="style2" > AddPost</h1>
    <textarea class="ckeditor" cols="10" id="editor1" name="editor1" rows="5" placeholder="Whats on Your mind!"  ></textarea>
-      <input type="submit" name="Submit" value="POST" onfocus="red" />
+      <input type="submit" name="Submit" value="        POST new announcement        " onfocus="red" />
     </p>
     <p>&nbsp;</p>
   </form>

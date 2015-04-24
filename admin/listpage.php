@@ -1,5 +1,4 @@
 <title>Edit Page</title>
-<script type="text/javascript" src="/intern123/ckeditor/ckeditor.js"></script>
   <?php 
 include("admin_template.php");
 require_once("config.php");

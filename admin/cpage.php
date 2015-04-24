@@ -73,14 +73,13 @@ document.getElementById("editor1").style.visibility="hidden";
 document.getElementById("custom").style.visibility="visible";
 }
 </script>
-<script type="text/javascript" src="/intern123/ckeditor/ckeditor.js"></script>
 
 <div>
 <h1>CREATE PAGE</h1><br>
 <form id="form1" name="form1" method="post" action="<?php echo $editFormAction; ?>">
   <table width="624" height="304" border="0" >
-    <tr valign="baseline">
-      <td width="113">Page tiltle </td>
+    <tr>
+      <td width="113">Page Title </td>
       <td width="501">
 	  
         <input type="text" name="title1" />      </td>
@@ -104,12 +103,14 @@ document.getElementById("custom").style.visibility="visible";
       <td height="172">Page Content </td>
       <td><select class="input-large" name="custom" id="custom"  style="visibility:hidden;">
 	  <?php 
-			$d = dir("custom");
-			$file = $d->read();$file = $d->read();
-			while (($file = $d->read()) !== false){ 
-				  echo ' <option value="'.$file.'" >'. $file . '</option><br>'; 
+			$d = dir("./custom");
+			while (($file = $d->read()) !== false){
+				if ($file==".") continue;
+				if ($file=="..") continue;
+				  echo ' <option value="'.$file.'" >'."$file". '</option><br>'; 
 				} 
 			$d->close(); 
+
 		?>
 </select><br>
 	  <textarea class="ckeditor" cols="80" id="editor1" name="content" rows="10" placeholder="Type Content" ></textarea><br>
@@ -127,17 +128,22 @@ document.getElementById("custom").style.visibility="visible";
     <tr valign="baseline">
       <td>&nbsp;</td>
       <td>
-        <input type="submit" name="Submit" value="Submit" />      </td>
-    </tr>
-  </table>
-    <input type="hidden" name="MM_insert" value="form1" />
-
+        <input type="submit" name="Submit" value="Submit New Page      " />      
+		 
+    <input type="hidden" name="MM_insert" value="form1" /></td></tr>
+	<tr><td>&nbsp;</td>
+<td>
 </form>
 <form action="listpage.php" id="form4" name="form4" method="post" >
- <input align="middle" type="submit" name="Submit" value="List Page" />
+ <input align="middle" type="submit" name="Submit" value="List Previous Pages " />
 </form>
-</div>
+</td>
+    </tr>
+	
+ </table>
+ </div>
 <?php
 
 include_once("footer.html");
 ?>
+

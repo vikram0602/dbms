@@ -1,6 +1,13 @@
 <?php include("noside.php"); ?>
 <?php include("config.php"); ?>
 
+<?php
+if (!isset($_SESSION["CurrentUserType"])) {
+  header("Location:index.php");
+  die();
+}
+?>
+
 <h1> Welcome! </h1>
 <p> You are viewing the aggregate wind speed tool for station number 
 

@@ -40,7 +40,7 @@
 			}
 			   else
 				  { echo "not authorised user"; 
-				   header('Location:/dbms/index.php');
+				   header('Location:../index.php');
 					exit;
 		}
 		

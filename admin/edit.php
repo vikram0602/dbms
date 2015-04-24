@@ -73,7 +73,7 @@ $totalRows_Recordset1 = oci_num_rows($Recordset1);
 	
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
-      <td><input type="submit" value="Update record" /></td>
+      <td><input type="submit" value="Update record       " /></td>
     </tr>
 
   <input type="hidden" name="MM_update" value="form1" />
@@ -84,7 +84,7 @@ $totalRows_Recordset1 = oci_num_rows($Recordset1);
 <form method='post' action='changepass.php'>
 
 <td> <input type="hidden" name="username" value="<?php echo $row_Recordset1[0]; ?>" /></td>
-<td><input type="submit" value="Change Password" /></td>
+<td><input type="submit" value="Change Password " /></td>
 </form>
 </tr>
   </table>

@@ -6,13 +6,13 @@ require_once('jpgraph_line.php');
 
 //Parameters
 if (isset($_GET["month_from"]))
-	$mf=$_GET["month_from"];
+	$mf=(int)$_GET["month_from"];
 if (isset($_GET["year_from"]))
-	$yf=$_GET["year_from"];
+	$yf=(int)$_GET["year_from"];
 if (isset($_GET["month_to"]))
-	$mt=$_GET["month_to"];
+	$mt=(int)$_GET["month_to"];
 if (isset($_GET["year_to"]))
-	$yt=$_GET["year_to"];
+	$yt=(int)$_GET["year_to"];
 if(!isset($mf) or $mf=='aa' or $mf== NULL)
 	$mf=01;
 if(!isset($yf) or $yf=='aa' or $yf== NULL)
@@ -54,7 +54,7 @@ $graph->xaxis->scale->ticks->Set(1);
 $graph->xaxis->title->Set("Monthly Index                                                                         ");
 $graph->yaxis->title->Set("Temperature (F°)");
 
-$p1 = new LinePlot($temp_temps,$temp_dates);
+$p1 = new LinePlot($temp_temps);
 $graph->Add($p1);
 $p1->SetFillGradient('yellow','red');
 $p1->SetStepStyle();

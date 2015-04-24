@@ -29,6 +29,10 @@
 								
 							<!-- Logo -->
 							<?php session_start();
+							 if (isset($_GET["station_id"]))
+                                                          $station_id = (string)$_GET["station_id"];
+                                                        if (isset($_GET["msid"]))
+                                                          $msid = (string)$_GET["msid"];
 							if (isset($_SESSION['CurrentUser'])) {
 								echo "<h1><a href=\"index.php\" id=\"logo\">CR Sys</a></h1>";
 							} else {
@@ -46,7 +50,12 @@
 									<li><a href="faq.php">FAQs</a></li>
 									<?php
 									  if (isset($_SESSION['CurrentUser'])) {
-									  	echo "<li><a href=\"login/logout.php\">Logout</a></li>";
+										if (isset($station_id)) {
+									  	  echo "<li><a href=\"tools.php?station_id=$station_id\">Analysis</a></li>";
+									  	} else if (isset($msid)) {
+									  	  echo "<li><a href=\"tools.php?msid=$msid\">Analysis</a></li>";
+										}
+										  echo "<li><a href=\"login/logout.php\">Logout</a></li>";
 									  } else {
 									  	echo "<li><a href=\"index.php#login\">Login</a></li>";
 									  }

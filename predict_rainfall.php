@@ -1,7 +1,13 @@
 <?php include("noside.php"); ?>
-<?php include("config.php"); ?>
 
 <?php 
+
+if (!isset($_SESSION["CurrentUserType"])) {
+  header("Location:index.php");
+  die();
+}
+
+include("config.php");
 
 if (isset($_GET["month_from"]))
 	$mf=$_GET["month_from"];
@@ -200,6 +206,7 @@ echo $station_id;
 		<input type="submit" value="DOMAIN FILTER">
 		</div>
 		</div>
+		<input type="hidden" name="station_id" value="<?php echo $station_id; ?>">
 		</form><br>
 				
 

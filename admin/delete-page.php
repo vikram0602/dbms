@@ -2,6 +2,10 @@
  ?>
 <?php
 
+session_start();
+if(!isset($_SESSION["CurrentUserType"])) {
+  die();
+}
 
 if ((isset($_GET['title'])) && ($_GET['title'] != "")) {
   $b ="DELETE FROM newpage WHERE title='".$_GET['title']."'";

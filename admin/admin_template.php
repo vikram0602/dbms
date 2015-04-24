@@ -2,8 +2,10 @@
  include_once("config.php");
   session_start();
   
-if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
-	 header("location:/dbms/login/logout.php");
+if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin") {
+	 header("location:../login/logout.php");
+	 die(); //Do not execute furthur
+}
  ?>
 <!DOCTYPE HTML>
 
@@ -42,7 +44,7 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 								<ul>
 									<li class="active"><a href="adminaccount.php">Home</a></li>
 									<li>
-										<a href="cpage.php">Create Page</a>
+										<a href="cpage.php">Manage Pages</a>
 									</li>
 									<li><a href="post.php">Announcement</a></li>
 									<li><a href="edit.php">Edit Profile</a></li>
@@ -72,8 +74,8 @@ if(!isset($_SESSION['CurrentUser']) || $_SESSION['CurrentUserType']!="admin")
 										</li>
 									<li><a href="add_faq.php">FAQs</a></li>
 									<li><a href="../index.php">Go To Search</a></li>
-									<li><a href="contact.php">contact us</a></li>
-									<li><a href="cUser.php">create user</a></li>
+									<li><a href="contact.php">Contact Us</a></li>
+									<li><a href="cUser.php">Create User</a></li>
 								</ul>
 							</section>
 							<section>

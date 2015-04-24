@@ -1,3 +1,4 @@
+<?php die(); ?>
 <?php include("noside.php"); ?>
 <?php include_once("config.php"); ?>
 

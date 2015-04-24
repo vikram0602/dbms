@@ -42,7 +42,7 @@ $graph->xaxis->scale->ticks->Set(1);
 $graph->xaxis->title->Set("Monthly Index                                                                         ");
 $graph->yaxis->title->Set("Hourly Wind Speed (avg MPH)");
 
-$p1 = new LinePlot($temp_temps,$temp_dates);
+$p1 = new LinePlot($temp_temps);
 $graph->Add($p1);
 $p1->SetFillGradient('lightgreen','white');
 $p1->SetStepStyle();

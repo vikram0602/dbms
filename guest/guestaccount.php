@@ -78,7 +78,8 @@ a:hover
  
 		<div id="middle-column">
 		</div>
-		
+		<h2>Welcome!</h2><br>
+		<img src="images/user.jpeg">
 </body>
 <?php include("footer.html"); ?>
 </html>

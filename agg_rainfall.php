@@ -3,6 +3,11 @@
 
 <?php 
 
+if (!isset($_SESSION["CurrentUserType"])) {
+  header("Location:index.php");
+  die();
+}
+
 if (isset($_GET["month_from"]))
 	$mf=$_GET["month_from"];
 if (isset($_GET["year_from"]))
@@ -160,6 +165,7 @@ echo $station_id;
 		<input type="submit" value="DOMAIN FILTER">
 		</div>
 		</div>
+		<input type="hidden" name="station_id" value="<?php echo $station_id; ?>">
 		</form><br>
 
 <h1> Station Summary for the Measurement Period</h1>

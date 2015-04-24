@@ -53,6 +53,12 @@ if($table==NULL)
 //echo $table;
 include("noside.php");
 include("config.php");
+
+if (!isset($_SESSION["CurrentUserType"])) {
+  header("Location:index.php");
+  die();
+}
+
 if ($conn)
    {
 	  // echo "connected";
