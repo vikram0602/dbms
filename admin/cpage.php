@@ -127,20 +127,16 @@ document.getElementById("custom").style.visibility="visible";
     <tr valign="baseline">
       <td>&nbsp;</td>
       <td>
-        <input type="submit" name="Submit" value="Submit" />      
-		 <input type="button" name="Submit1" value="Listpage"><a href='listpage.php'></a> </input>    
- 
-    <input type="hidden" name="MM_insert" value="form1" /></td>
-<td>
+        <input type="submit" name="Submit" value="Submit" />      </td>
+    </tr>
+  </table>
+    <input type="hidden" name="MM_insert" value="form1" />
+
 </form>
 <form action="listpage.php" id="form4" name="form4" method="post" >
  <input align="middle" type="submit" name="Submit" value="List Page" />
 </form>
-</td>
-    </tr>
-	
- </table>
- </div>
+</div>
 <?php
 
 include_once("footer.html");
