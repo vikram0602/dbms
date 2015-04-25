@@ -1,7 +1,6 @@
 <?php 
 
 include("template.php");
-//$user=$_SESSION["CurrentUser"];
 include('config.php');
 if(isset($_GET["title"]))
 	$title=$_GET["title"];
@@ -14,16 +13,10 @@ if(!$conn)
 else
 {
 $b = "SELECT * from newpage where title=:title";
-//echo $b;
  $stid = oci_parse($conn,$b);//parsing your query
  oci_bind_by_name($stid,":title",$title);
 	   oci_execute($stid);// execute that parsed query
 	   $row = oci_fetch_array($stid, OCI_BOTH)
-//$row = oci_fetch_assoc($stid);
-//$totalRows_Recordset1 = oci_num_rows($stid);	
-	
-	
-	
 ?>
 
 <head>

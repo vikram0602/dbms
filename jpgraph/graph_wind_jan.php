@@ -37,11 +37,16 @@ if(!isset($station_id) or $station_id=="") {
 	$station_id = 722060;
 }
 
+$yf = (int)$yf;
+$mf = (int)$mf;
+$mt = (int)$mt;
+$yt = (int)$yt;
+$predict_years = (int)$predict_years;
+$ms = (int)$ms;
 if (strlen((string)$ms)==1) {
-	$ms = (string)$ms;
-	$ms = "0".$ms;
+        $ms = (string)$ms;
+        $ms = "0".$ms;
 }
-
 //DB
 $temp_agg_b="SELECT avg(wind_speed) as tmp,to_char(time_stamp,'YYYY') as dte from climate_data where to_char(time_stamp,'MM')='$ms' and station_id=:station_id and time_stamp between TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd') AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd') group by TO_CHAR(time_stamp,'YYYY') order by dte asc";
 $temp_agg_s = oci_parse($conn,$temp_agg_b);

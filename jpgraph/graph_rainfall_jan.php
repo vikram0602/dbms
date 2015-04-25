@@ -37,9 +37,15 @@ if(!isset($station_id) or $station_id=="") {
 	$station_id = 722060;
 }
 
+$yf = (int)$yf;
+$mf = (int)$mf;
+$mt = (int)$mt;
+$yt = (int)$yt;
+$predict_years = (int)$predict_years;
+$ms = (int)$ms;
 if (strlen((string)$ms)==1) {
-	$ms = (string)$ms;
-	$ms = "0".$ms;
+        $ms = (string)$ms;
+        $ms = "0".$ms;
 }
 
 //DB

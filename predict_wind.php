@@ -34,6 +34,13 @@ if(!isset($ms) or $ms=='aa' or $ms== NULL)
 if(!isset($predict_years) or $predict_years=='aa' or $predict_years== NULL)
 	$predict_years = 5;
 
+$yf = (int)$yf;
+$mf = (int)$mf;
+$mt = (int)$mt;
+$yt = (int)$yt;
+$predict_years = (int)$predict_years;
+$ms = (int)$ms;
+
 ?> 
 
 <style type="text/css">

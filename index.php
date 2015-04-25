@@ -11,6 +11,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 		<script>
 		$('a[href^="#"]').on('click', function(event) {
 
@@ -144,6 +145,7 @@
 		</br>
 			<div>
 					
+				<div class="g-recaptcha" data-sitekey="6LepnAUTAAAAAL6oV6KOL4PB55EINu_zVUn550lp"></div><br>
 				<button type="submit" class="btn btn-default">Sign In</button>
 				
 				<button type="submit" class="btn btn-default">

@@ -6,13 +6,13 @@ require_once('jpgraph_line.php');
 
 //Parameters
 if (isset($_GET["month_from"]))
-	$mf=(int)$_GET["month_from"];
+	$mf=$_GET["month_from"];
 if (isset($_GET["year_from"]))
-	$yf=(int)$_GET["year_from"];
+	$yf=$_GET["year_from"];
 if (isset($_GET["month_to"]))
-	$mt=(int)$_GET["month_to"];
+	$mt=$_GET["month_to"];
 if (isset($_GET["year_to"]))
-	$yt=(int)$_GET["year_to"];
+	$yt=$_GET["year_to"];
 if(!isset($mf) or $mf=='aa' or $mf== NULL)
 	$mf=01;
 if(!isset($yf) or $yf=='aa' or $yf== NULL)
@@ -23,6 +23,10 @@ if(!isset($yt) or $yt=='aa' or $yt== NULL)
 	$yt=2014;
 
 //DB
+$yf = (int)$yf;
+$mf = (int)$mf;
+$mt = (int)$mt;
+$yt = (int)$yt;
 $station_id = (string)$_GET["station_id"];
 $temp_agg_b="SELECT avg(rainfall) as tmp,to_char(time_stamp,'MM') as dte from climate_data where station_id=:station_id and time_stamp between TO_DATE ('$yf/$mf/01', 'yyyy/mm/dd') AND TO_DATE ('$yt/$mt/28', 'yyyy/mm/dd') group by TO_CHAR(time_stamp,'MM') order by dte asc";
 $temp_agg_s = oci_parse($conn,$temp_agg_b);

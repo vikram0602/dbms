@@ -6,7 +6,7 @@ Email:
 <input type="text" name="email">
 Message: 
 <textarea class="form-control" rows="5" name="message"></textarea><br>
-<div class="g-recaptcha" data-sitekey="site-key here"></div><br>
+<div class="g-recaptcha" data-sitekey="6LepnAUTAAAAAL6oV6KOL4PB55EINu_zVUn550lp"></div><br>
 <input type="submit" value="Submit message" class="btn btn-default">
 </form>
 
@@ -17,7 +17,7 @@ include("config.php");
 
 function check_captcha() {
   $gurl = "https://www.google.com/recaptcha/api/siteverify";
-  $secret = "secrethere";
+  $secret = "secretkey";
   $remoteip = $_SERVER['REMOTE_ADDR'];
   if (!isset($_POST['g-recaptcha-response'])) {
     return false;

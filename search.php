@@ -65,13 +65,13 @@ if (isset($_GET["pressure"]))
 if (isset($_GET["rainfall"]))
 	$rf=(float)$_GET["rainfall"];
 if (isset($_GET["date1"]))
-	$mf=(string)$_GET["date1"];
+	$mf=(int)$_GET["date1"];
 if (isset($_GET["date2"]))
-	$yf=(string)$_GET["date2"];
+	$yf=(int)$_GET["date2"];
 if (isset($_GET["date3"]))
-	$mt=(string)$_GET["date3"];
+	$mt=(int)$_GET["date3"];
 if (isset($_GET["date4"]))
-	$yt=(string)$_GET["date4"];
+	$yt=(int)$_GET["date4"];
 
 if(!isset($hum) or $hum=='aa' or $hum==NULL)
 	$hum=0;
